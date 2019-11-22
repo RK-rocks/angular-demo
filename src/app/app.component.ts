@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-dream-app';
+  title :string= 'raj';
+  age:number = 12
+
+  constructor(public userService:UserService){
+    
+  }
+
+  getEmail(event){
+    console.log(event)
+  }
 }
