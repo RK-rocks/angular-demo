@@ -1,0 +1,52 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div id="vcontainer">
+          <div id="hcontainer">
+            <div id="content">
+                <div class="row ma-0"> 
+                  <div class="mlr-auto">
+                    <span class="title">Hello Please fill up details to Login</span>
+                  </div>
+                </div>
+                <div class="row ma-0 mt-20">
+                  <div class="mlr-auto">
+                    <img class="height-100" src="../../../assets/images/download.png" alt="logo">
+                  </div>
+                </div>
+                
+                  
+                  
+                  <div class="row ma-0 mt-10">
+                      <div class="col-lg-12 pa-0">
+                        <label for="mobileNoId">Mobile No:</label>
+                      </div>
+                      <div class="col-lg-12 pa-0">
+                            <input class="input-forms" type="text" formControlName="mobileNo">
+                        </div>
+                  </div>
+                  <div class="row ma-0 mt-10">
+                        <div class="col-lg-12 pa-0">
+                          <label for="passwordId">Password:</label>
+                        </div>
+                        <div class="col-lg-12 pa-0">
+                              <input class="input-forms" type="text" formControlName="password">
+                          </div>
+                    </div>
+                  
+                    <div class="row ma-0 mt-20">
+                      <div class="mlr-auto">
+                        <button class="btn btn-primary submit-btn" type="submit" [disabled]="!loginForm.valid">Login</button>
+                      </div>
+                    </div>
+                    
+                    <div class="row ma-0 mt-10">
+                        <div class="mlr-auto">
+                            <span>
+                                <a [attr.href]="registerLink">Not Registered?</a>
+                            </span>
+                        </div>
+                    </div>
+            </div>
+          </div>
+        </div>
+      </form>

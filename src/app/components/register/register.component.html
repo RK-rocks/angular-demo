@@ -1,0 +1,65 @@
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div id="vcontainer">
+    <div id="hcontainer">
+      <div id="content">
+          <div class="row ma-0"> 
+            <div class="mlr-auto">
+              <span class="title">Hello Please fill up details to register</span>
+            </div>
+          </div>
+          <div class="row ma-0 mt-20">
+            <div class="mlr-auto">
+              <img class="height-100" src="../../../assets/images/download.png" alt="logo">
+            </div>
+          </div>
+          <div class="row ma-0 mt-10">
+              <div class="col-lg-12 pa-0 mlr-auto">
+                <label for="firstNameId">First Name:</label>
+              </div>
+              <div class="col-lg-12 pa-0">
+                  <input class="input-forms" type="text" formControlName="firstName">
+                </div>
+              </div>
+            
+            <div class="row ma-0 mt-10">
+                <div class="col-lg-12 pa-0">
+                  <label for="lastNameId">Last Name:</label>
+                </div>
+                <div class="col-lg-12 pa-0">
+                      <input class="input-forms" type="text" formControlName="lastName">
+                  </div>
+            </div>
+            <div class="row ma-0 mt-10">
+                <div class="col-lg-12 pa-0">
+                  <label for="mobileNoId">Mobile No:</label>
+                </div>
+                <div class="col-lg-12 pa-0">
+                      <input class="input-forms" type="text" formControlName="mobileNo">
+                  </div>
+            </div>
+            <div class="row ma-0 mt-10">
+                <div class="col-lg-12 pa-0">
+                  <label for="passwordId">Password:</label>
+                </div>
+                <div class="col-lg-12 pa-0">
+                      <input class="input-forms" type="text" formControlName="password11">
+                  </div>
+            </div>
+            <div class="row ma-0 mt-10">
+                <div class="col-lg-12 pa-0">
+                  <label for="addressId">Address:</label>
+                </div>
+                <div class="col-lg-12 pa-0">
+                      <textarea class="input-forms" rows=5 cols=5 type="text" formControlName="address"></textarea>
+                  </div>
+            </div>
+              <div class="row ma-0 mt-20">
+                <div class="mlr-auto">
+                  <button class="btn btn-primary submit-btn" type="submit" [disabled]="!registerForm.valid">Register</button>
+                </div>
+              </div>  
+      </div>
+    </div>
+  </div>
+</form>

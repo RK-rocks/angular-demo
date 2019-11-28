@@ -7,7 +7,7 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title :string= 'raj';
+  name :string= 'raj';
   age:number = 12
 
   constructor(public userService:UserService){

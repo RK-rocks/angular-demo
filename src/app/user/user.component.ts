@@ -22,7 +22,6 @@ export class UserComponent implements OnInit {
     this.email.emit(data)
     let data1 = this.dataservice.getUser()
     console.log(data1)
-
   }
 
 }

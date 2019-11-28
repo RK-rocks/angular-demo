@@ -1,3 +1,18 @@
-<router-outlet></router-outlet>
-<user [username]='title' [userage]='age' (email)=getEmail($event)>
-</user>
+<nb-layout>
+
+  <nb-layout-header fixed>
+  <!-- Insert header here -->
+  </nb-layout-header>
+
+  <nb-layout-column>
+
+      <div class="container-fluid">
+            <router-outlet></router-outlet>
+    </div>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+  <!-- Insert footer here -->
+  </nb-layout-footer>
+
+</nb-layout>
