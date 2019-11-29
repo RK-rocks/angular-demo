@@ -5,7 +5,7 @@
             <div id="content">
                 <div class="row ma-0"> 
                   <div class="mlr-auto">
-                    <span class="title">Hello Please fill up details to Login</span>
+                    <span class="title">Hello please fill up details to login</span>
                   </div>
                 </div>
                 <div class="row ma-0 mt-20">
@@ -16,33 +16,39 @@
                 
                   
                   
+                <div class="row ma-0 mt-10">
+                    <div class="col-lg-12 pa-0">
+                      <label class="all-lebel" for="mobileNoId">Mobile No:</label>
+                    </div>
+                    <div class="col-lg-12 pa-0">
+                          <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.mobileNo.errors }" type="text" formControlName="mobileNo">
+                          <div *ngIf="submitted && f.mobileNo.errors" class="invalid-feedback">
+                              <div *ngIf="f.mobileNo.errors.required">Mobile no is required</div>
+                          </div>
+                      </div>
+                </div>
                   <div class="row ma-0 mt-10">
                       <div class="col-lg-12 pa-0">
-                        <label for="mobileNoId">Mobile No:</label>
+                        <label class="all-lebel" for="passwordId">Password:</label>
                       </div>
                       <div class="col-lg-12 pa-0">
-                            <input class="input-forms" type="text" formControlName="mobileNo">
+                            <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.password11.errors }" type="password" formControlName="password11">
+                            <div *ngIf="submitted && f.password11.errors" class="invalid-feedback">
+                                <div *ngIf="f.password11.errors.required">Password is required</div>
+                            </div>
                         </div>
                   </div>
-                  <div class="row ma-0 mt-10">
-                        <div class="col-lg-12 pa-0">
-                          <label for="passwordId">Password:</label>
-                        </div>
-                        <div class="col-lg-12 pa-0">
-                              <input class="input-forms" type="text" formControlName="password">
-                          </div>
-                    </div>
                   
                     <div class="row ma-0 mt-20">
                       <div class="mlr-auto">
-                        <button class="btn btn-primary submit-btn" type="submit" [disabled]="!loginForm.valid">Login</button>
+                        <button class="btn btn-primary submit-btn" type="submit">Login</button>
                       </div>
                     </div>
                     
                     <div class="row ma-0 mt-10">
                         <div class="mlr-auto">
                             <span>
-                                <a [attr.href]="registerLink">Not Registered?</a>
+                                <a [routerLink]="['register']">Not Registered?</a>
                             </span>
                         </div>
                     </div>

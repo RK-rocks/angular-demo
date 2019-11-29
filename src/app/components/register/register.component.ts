@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup,FormControl } from '@angular/forms';
-import { Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -9,28 +8,41 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+  registerForm: FormGroup;
+  submitted = false;
   constructor(
     protected router: Router,
+    private formBuilder: FormBuilder
   ) { }
 
-  ngOnInit() {
-  }
 
-  registerForm = new FormGroup({
-    firstName : new FormControl('',Validators.required),
-    lastName : new FormControl('',Validators.required),
-    mobileNo : new FormControl('',Validators.required),
-    password11 : new FormControl('',Validators.required),
-    address : new FormControl('',Validators.required),
-  })
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      mobileNo: ['', Validators.required],
+      password11: ['', [Validators.required, Validators.minLength(6)]],
+      address: ['', Validators.required]
+  });
+  }
 
   
 
+  // convenience getter for easy access to form fields
+  get f() { 
+    console.log(this.registerForm.controls)
+    console.log(this.submitted)
+    return this.registerForm.controls; }
+
   onSubmit() {
+    this.submitted = true;
     // TODO: Use EventEmitter with form value
+    // stop here if form is invalid
     console.warn(this.registerForm.value);
-    this.router.navigate(["/login"]);
+    if (this.registerForm.invalid) {
+      return;
+    }
+    this.router.navigate(["/"]);
   }
 
 }

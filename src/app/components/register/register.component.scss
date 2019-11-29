@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'ostrich-sans';
+  src: url(/assets/fonts/ostrich-sans/) format("opentype");
+}
+@font-face {
+  font-family: 'aller';
+  src: url(/assets/fonts/aller/Aller_BdIt.ttf) format("opentype");
+}
+
+.invalid-feedback{
+  color: #ec1328;
+}
+
 #vcontainer {
     display: table;
     height: 100%;
@@ -12,7 +25,7 @@
     padding: 20px;
     display: inline-block;
     //border: lightGray 1px solid;
-    background-color:#14263073;
+    background-color:#28526973;
     text-align: left;
   }
 
@@ -25,9 +38,11 @@
 
   .submit-btn{
     background-color: #ffbe2b;
-    color: #000000ad;
+    color: #ffffff;
     border: 1px solid #ffbe2b;
     width: 180px;
+    font-size: 18px;
+    font-family: 'ostrich-sans';
   }
 
   .ma-0{
@@ -57,6 +72,11 @@
 
   .title{
     font-size: 25px;
-    color: #ff00de7a;
-    font-family: serif;
+    color: #ffffff;
+    font-family: 'aller';
+    font-weight: 900;
+  }
+
+  .all-lebel{
+    font-family: 'aller';
   }
