@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'user',
@@ -20,8 +20,6 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     let data = "demo@gmail.com"
     this.email.emit(data)
-    let data1 = this.dataservice.getUser()
-    console.log(data1)
   }
 
 }

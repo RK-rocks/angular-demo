@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
+  loading = false
   constructor(
     protected router: Router,
     private formBuilder: FormBuilder
@@ -36,10 +37,12 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.loading = true
     // TODO: Use EventEmitter with form value
     // stop here if form is invalid
     console.warn(this.registerForm.value);
     if (this.registerForm.invalid) {
+      this.loading = false
       return;
     }
     this.router.navigate(["/"]);
