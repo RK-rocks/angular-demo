@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'ostrich-sans';
-  src: url(/assets/fonts/ostrich-sans/) format("opentype");
+  src: url(/assets/fonts/ostrich-sans/ostrich-regular.ttf) format("opentype");
 }
 @font-face {
   font-family: 'aller';
-  src: url(/assets/fonts/aller/Aller_BdIt.ttf) format("opentype");
+  src: url(/assets/fonts/Aller/Aller_BdIt.ttf) format("opentype");
 }
 
 @keyframes spinner {
@@ -28,6 +28,7 @@
 
 .invalid-feedback{
   color: #ec1328;
+  width: 332px;
 }
 
 #vcontainer {
@@ -44,7 +45,7 @@
     padding: 20px;
     display: inline-block;
     //border: lightGray 1px solid;
-    background-color:#28526973;
+    background-color:#fffffffa;
     text-align: left;
   }
 
@@ -61,7 +62,7 @@
     border: 1px solid #ffbe2b;
     width: 180px;
     font-size: 18px;
-    font-family: 'ostrich-sans';
+    font-family: 'aller';
   }
 
   .ma-0{
@@ -91,11 +92,12 @@
 
   .title{
     font-size: 25px;
-    color: #ffffff;
+    color: #212b36;
     font-family: 'aller';
     font-weight: 900;
   }
 
   .all-lebel{
     font-family: 'aller';
+    color: #212b36;
   }

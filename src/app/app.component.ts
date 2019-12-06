@@ -14,7 +14,7 @@ export class AppComponent {
     
   }
 
-  getEmail(event){
-    console.log(event)
-  }
+  // getEmail(event){
+  //   console.log(event)
+  // }
 }

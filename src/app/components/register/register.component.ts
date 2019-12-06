@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
+import { PasswordStrengthValidator } from '../../helpers/password-strength.validator';
+import { MobileValidator } from '../../helpers/mobile.validator';
+
 
 @Component({
   selector: 'app-register',
@@ -19,10 +22,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      mobileNo: ['', Validators.required],
-      password11: ['', [Validators.required, Validators.minLength(6)]],
+      firstName: ['', [Validators.required,Validators.maxLength(12)]],
+      lastName: ['', [Validators.required,Validators.maxLength(12)]],
+      mobileNo: ['', [Validators.required,MobileValidator]],
+      password11: ['', [Validators.required, PasswordStrengthValidator]],
       address: ['', Validators.required]
   });
   }
@@ -31,8 +34,6 @@ export class RegisterComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { 
-    console.log(this.registerForm.controls)
-    console.log(this.submitted)
     return this.registerForm.controls; }
 
   onSubmit() {
@@ -42,6 +43,7 @@ export class RegisterComponent implements OnInit {
     // stop here if form is invalid
     console.warn(this.registerForm.value);
     if (this.registerForm.invalid) {
+      console.log(this.registerForm)
       this.loading = false
       return;
     }

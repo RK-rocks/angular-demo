@@ -45,6 +45,10 @@ export class LoginComponent implements OnInit {
     }
     this.submitted = true;
     console.warn(this.loginForm.value);
+    console.log('+++++++++++++++++++++')
+    console.log(this.loginForm.value.mobileNo)
+    console.log('+++++++++++++++++++++')
+    console.log(this.loginForm.value.password11)
     this.AuthService
       .login(this.loginForm.value.mobileNo, this.loginForm.value.password11)
       

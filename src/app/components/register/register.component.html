@@ -23,6 +23,7 @@
                   <input type="text" formControlName="firstName" class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
                   <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                       <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                      <div *ngIf="f.firstName.errors.maxlength">First Name must be less then 12 characters</div>
                   </div>
                 </div>
             </div>
@@ -35,6 +36,7 @@
                       <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" type="text" formControlName="lastName">
                       <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                           <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                          <div *ngIf="f.lastName.errors.maxlength">Last Name must be less then 12 characters</div>
                       </div>
                   </div>
             </div>
@@ -43,9 +45,10 @@
                   <label class="all-lebel" for="mobileNoId">Mobile No:</label>
                 </div>
                 <div class="col-lg-12 pa-0">
-                      <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" type="text" formControlName="mobileNo">
+                      <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.mobileNo.errors }" type="text" formControlName="mobileNo">
                       <div *ngIf="submitted && f.mobileNo.errors" class="invalid-feedback">
                           <div *ngIf="f.mobileNo.errors.required">Mobile no is required</div>
+                          <span *ngIf="f.mobileNo.errors.mobileNumberError">Mobile no must be validate</span>
                       </div>
                   </div>
             </div>
@@ -54,9 +57,10 @@
                   <label class="all-lebel" for="passwordId">Password:</label>
                 </div>
                 <div class="col-lg-12 pa-0">
-                      <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" type="password" formControlName="password11">
+                      <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.password11.errors }" type="password" formControlName="password11">
                       <div *ngIf="submitted && f.password11.errors" class="invalid-feedback">
                           <div *ngIf="f.password11.errors.required">Password is required</div>
+                          <span *ngIf="f.password11.errors.passwordStrength">Password Should contain one Upper case character,one lower case character,one special charecter and length must be greater then 8 character</span>
                       </div>
                   </div>
             </div>
@@ -65,7 +69,7 @@
                   <label class="all-lebel" for="addressId">Address:</label>
                 </div>
                 <div class="col-lg-12 pa-0">
-                      <textarea class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" rows=5 cols=5 type="text" formControlName="address"></textarea>
+                      <textarea class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" rows=5 cols=5 type="text" formControlName="address"></textarea>
                       <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
                           <div *ngIf="f.address.errors.required">Address is required</div>
                       </div>

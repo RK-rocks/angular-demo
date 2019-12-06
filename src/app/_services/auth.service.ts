@@ -17,11 +17,17 @@ export class AuthService {
       this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
       this.currentUser = this.currentUserSubject.asObservable();
   }
+
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+  }
+
   login(username: string, password: string) {
     let userObj = {
       username: username,
       password: password
     };
+    
     let URL = "user/api/Account/login";
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
@@ -35,7 +41,9 @@ export class AuthService {
         JSON.stringify(userObj),
         options
       ).subscribe((data) => {
-        console.log('data', data);
+        console.log('data', userObj);
+        localStorage.setItem('currentUser', JSON.stringify(userObj));
+        // this.currentUserSubject.next(userObj);
       }, (err) => {
         console.log('err', err);
       });
