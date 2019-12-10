@@ -39,6 +39,23 @@
   color: black;
 }
 
+.btn-primary:hover:active{
+  color: #fff;
+  background-color: #a14da9;
+  border-color: #a14da9;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #a14da9;
+  border-color: #a14da9;
+}
+
+.note-style{
+  color: black;
+  font-weight: bold
+}
+
 #vcontainer {
     display: table;
     height: 100%;

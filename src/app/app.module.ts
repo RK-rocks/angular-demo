@@ -14,14 +14,18 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ToastrModule } from 'ngx-toastr';
+import { DashboardLayoutsComponent } from './components/dashboard-layouts/dashboard-layouts.component';
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     RegisterComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    DashboardLayoutsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     NbLayoutModule,
     NbEvaIconsModule,
     HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

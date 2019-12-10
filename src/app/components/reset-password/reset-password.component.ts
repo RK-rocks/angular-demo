@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../_services/auth.service";
-import { MobileValidator } from '../../helpers/mobile.validator';
+import { PasswordStrengthValidator } from '../../helpers/password-strength.validator';
 
 @Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss']
+  selector: 'app-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.scss']
 })
-export class ForgotPasswordComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit {
 
-  forgotPasswordForm: FormGroup;
+  resetPasswordForm: FormGroup;
   submitted = false;
   loading = false
   constructor(
@@ -23,15 +23,16 @@ export class ForgotPasswordComponent implements OnInit {
   user: any = {};
 
   ngOnInit() {
-    this.forgotPasswordForm = this.formBuilder.group({
-      mobileNo: ['', [Validators.required,Validators.required,MobileValidator]]
+    this.resetPasswordForm = this.formBuilder.group({
+      oldPassword: ['', [Validators.required,Validators.required,PasswordStrengthValidator]],
+      newPassword:['', [Validators.required,Validators.required,PasswordStrengthValidator]]
   });
   }
 
   registerLink='/'
 
   get f() { 
-    return this.forgotPasswordForm.controls; }
+    return this.resetPasswordForm.controls; }
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
@@ -40,18 +41,18 @@ export class ForgotPasswordComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     // stop here if form is invalid
     
-    if (this.forgotPasswordForm.invalid) {
+    if (this.resetPasswordForm.invalid) {
       this.loading = false
       return;
     }
     this.submitted = true;
-    console.warn(this.forgotPasswordForm.value);
+    console.warn(this.resetPasswordForm.value);
     console.log('+++++++++++++++++++++')
-    console.log(this.forgotPasswordForm.value.mobileNo)
+    console.log(this.resetPasswordForm.value.oldPassword)
     console.log('+++++++++++++++++++++')
-    console.log(this.forgotPasswordForm.value.password)
+    console.log(this.resetPasswordForm.value.newPassword)
     // this.AuthService
-    //   .login(this.forgotPasswordForm.value.mobileNo, this.forgotPasswordForm.value.password)
+    //   .login(this.resetPasswordForm.value.oldPassword, this.resetPasswordForm.value.newPassword)
       
     this.router.navigate(["/"]);
   }

@@ -51,7 +51,7 @@
                           <span *ngIf="f.mobileNo.errors.mobileNumberError">Mobile no must be validate</span>
                       </div>
                       <div>
-                        <span>Note :<span class="color-red">Add number in format (+countrycode)number</span></span>
+                        <span class="note-style">Note :<span class="color-red">Add number in format (+countrycode)number</span></span>
                       </div>
                   </div>
             </div>
@@ -60,10 +60,10 @@
                   <label class="all-lebel" for="passwordId">Password:</label>
                 </div>
                 <div class="col-lg-12 pa-0">
-                      <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.password11.errors }" type="password" formControlName="password11">
-                      <div *ngIf="submitted && f.password11.errors" class="invalid-feedback">
-                          <div *ngIf="f.password11.errors.required">Password is required</div>
-                          <span *ngIf="f.password11.errors.passwordStrength">Password Should contain one Upper case character,one lower case character,one special charecter and length must be greater then 8 character</span>
+                      <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" type="password" formControlName="password">
+                      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                          <div *ngIf="f.password.errors.required">Password is required</div>
+                          <span *ngIf="f.password.errors.passwordStrength">Password Should contain one Upper case character,one lower case character,one special charecter and length must be greater then 8 character</span>
                       </div>
                   </div>
             </div>
