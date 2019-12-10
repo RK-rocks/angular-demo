@@ -8,7 +8,7 @@ export const MobileValidator = function (control: AbstractControl): ValidationEr
     return null
   }
 
-  let upperCaseCharacters = /[0-9\+\-\ ]/g
+  let upperCaseCharacters = /^(\+?(\d{1}|\d{2}|\d{3})[- ]?)?\d{3}[- ]?\d{3}[- ]?\d{4}$/g
   if (upperCaseCharacters.test(value) === false) {
     return { mobileNumberError: `text has to contine Upper case characters,current value ${value}` };
   }

@@ -24,7 +24,11 @@
                           <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.mobileNo.errors }" type="text" formControlName="mobileNo">
                           <div *ngIf="submitted && f.mobileNo.errors" class="invalid-feedback">
                               <div *ngIf="f.mobileNo.errors.required">Mobile no is required</div>
+                              <span *ngIf="f.mobileNo.errors.mobileNumberError">Mobile no must be validate</span>
                           </div>
+                          <!-- <div>
+                            <span class="color-black">Note :<span class="color-red">Add number in format (+countrycode)number</span></span>
+                          </div> -->
                       </div>
                 </div>
                   <div class="row ma-0 mt-10">
@@ -53,6 +57,14 @@
                             </span>
                         </div>
                     </div>
+
+                    <div class="row ma-0 mt-10">
+                      <div class="mlr-auto">
+                          <span>
+                              <a [routerLink]="['forgot-password']">Forgot password.</a>
+                          </span>
+                      </div>
+                  </div>
             </div>
           </div>
         </div>
