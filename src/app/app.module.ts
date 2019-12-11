@@ -17,6 +17,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardLayoutsComponent } from './components/dashboard-layouts/dashboard-layouts.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { NbSidebarModule, NbSidebarService } from '@nebular/theme';
+import {AuthService} from "./_services/auth.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,8 @@ import { DashboardLayoutsComponent } from './components/dashboard-layouts/dashbo
     LoginComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    DashboardLayoutsComponent
+    DashboardLayoutsComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +41,10 @@ import { DashboardLayoutsComponent } from './components/dashboard-layouts/dashbo
     NbLayoutModule,
     NbEvaIconsModule,
     HttpClientModule,
+    NbSidebarModule,
     ToastrModule.forRoot()
   ],
-  providers: [UserService],
+  providers: [UserService,NbSidebarService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

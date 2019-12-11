@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NbSidebarModule, NbLayoutModule, NbSidebarService } from '@nebular/theme';
+import {ChangePasswordComponent} from '../change-password/change-password.component'
 
 @Component({
   selector: 'app-dashboard-layouts',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardLayoutsComponent implements OnInit {
 
-  constructor() { }
+  constructor(NbSidebarModule:NbSidebarModule,
+    NbLayoutModule:NbLayoutModule,
+    NbSidebarService:NbSidebarService) { }
 
   ngOnInit() {
   }

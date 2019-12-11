@@ -6,6 +6,7 @@ import { LoginComponent } from "../app/components/login/login.component";
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import {DashboardLayoutsComponent} from './components/dashboard-layouts/dashboard-layouts.component'
+import {ChangePasswordComponent} from './components/change-password/change-password.component'
 
 import { AuthGuard } from './_guards';
 
@@ -16,12 +17,12 @@ const routes: Routes = [
   },
   {
     path: "",
+    
     component: LoginComponent,
     
   },
   {
     path: "register",
-    canActivate:[AuthGuard],
     component: RegisterComponent
   },
   {
@@ -35,8 +36,14 @@ const routes: Routes = [
   {
     path: "dashboard",
     canActivate:[AuthGuard],
-    component: DashboardLayoutsComponent
-  }
+    component: DashboardLayoutsComponent,
+    children:[
+      {
+        path: "change-password",
+        component: ChangePasswordComponent
+      }
+    ]
+  },
 ];
 
 @NgModule({

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 import { PasswordStrengthValidator } from '../../helpers/password-strength.validator';
 import { MobileValidator } from '../../helpers/mobile.validator';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from "../../_services/auth.service";
 
 
 @Component({
@@ -16,7 +18,9 @@ export class RegisterComponent implements OnInit {
   loading = false
   constructor(
     protected router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private AuthService: AuthService,
+    private toastr: ToastrService
   ) { }
 
 
@@ -26,7 +30,7 @@ export class RegisterComponent implements OnInit {
       lastName: ['', [Validators.required,Validators.maxLength(12)]],
       mobileNo: ['', [Validators.required,MobileValidator]],
       password: ['', [Validators.required, PasswordStrengthValidator]],
-      address: ['', Validators.required]
+      email: ['', [Validators.required,Validators.email]]
   });
   }
 
@@ -36,18 +40,29 @@ export class RegisterComponent implements OnInit {
   get f() { 
     return this.registerForm.controls; }
 
-  onSubmit() {
-    this.submitted = true;
-    this.loading = true
-    // TODO: Use EventEmitter with form value
-    // stop here if form is invalid
-    console.warn(this.registerForm.value);
-    if (this.registerForm.invalid) {
-      console.log(this.registerForm)
-      this.loading = false
-      return;
+    async onSubmit() {
+      this.submitted = true;
+      this.loading = true
+      
+      if (this.registerForm.invalid) {
+        console.log(this.registerForm)
+        this.loading = false
+        return;
+      }else{
+        this.submitted = true;
+        try {
+          const url='register'
+        const res = await this.AuthService.postRequest(url,this.registerForm.value);
+        if(res.status == 1){
+          this.toastr.success(res.message)
+          this.router.navigate(["/"]);
+        }else{
+          this.loading = false;
+          this.toastr.warning(res.message)
+        }
+        } catch (error) {
+          console.log('err', error);
+        }
+      }
     }
-    this.router.navigate(["/"]);
-  }
-
 }

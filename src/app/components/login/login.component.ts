@@ -19,7 +19,12 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private AuthService: AuthService,
     private toastr: ToastrService
-  ) { }
+    
+  ) { 
+    if (this.AuthService.currentUserValue) {
+      this.router.navigate(["/dashboard"]);
+    }
+  }
 
   user: any = {};
 
@@ -49,23 +54,23 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.submitted = true;
-    console.warn(this.loginForm.value);
-    console.log('+++++++++++++++++++++')
-    console.log(this.loginForm.value.mobileNo)
-    console.log('+++++++++++++++++++++')
-    console.log(this.loginForm.value.password)
     let a = { "mobileNo": this.loginForm.value.mobileNo, "password": this.loginForm.value.password }
-    
+
     try {
-      const res = await this.AuthService.postRequest(a);
-      console.log('res', res);
-      const responseData = {
-            userId: res.data.userData.user_id,
-            token: res.data.userData.token
-          }
-      localStorage.setItem('currentUser', JSON.stringify(responseData));
-      this.toastr.success(res.message)
-      this.router.navigate(["/dashboard"]);
+      const url='login'
+      const res = await this.AuthService.postRequest(url,a);
+      console.log(res)
+      if(res.status == 1){
+        const responseData = {
+          userId: res.data.userData.user_id,
+          token: res.data.userData.token
+        }
+        localStorage.setItem('currentUser', JSON.stringify(responseData));
+        this.toastr.success(res.message)
+        this.router.navigate(["/dashboard"]);
+      }else{
+        this.toastr.warning(res.message)
+      }
     } catch (err) {
       console.log('err', err);
     }

@@ -24,12 +24,6 @@ export class AuthService {
   }
 
   login(userObj) {
-    // let userObj = {
-    //   mobileNo: username,
-    //   password: password
-    // };
-    console.log("+++++++++++++++++++++")
-    // console.log()
     let URL = "login";
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
@@ -42,30 +36,30 @@ export class AuthService {
         `${environment.apiUrl}/${URL}`,
         JSON.stringify(userObj),
         options
-      ).subscribe((data) => {
+      ).pipe(map(data  => {
         console.log('data', data);
-        const responseData = {
-          userId: data.data.userData.user_id,
-          token: data.data.userData.token
-        }
-        localStorage.setItem('currentUser', JSON.stringify(responseData));
+        // const responseData = {
+        //   userId: data.data.userData.user_id,
+        //   token: data.data.userData.token
+        // }
+        localStorage.setItem('currentUser', JSON.stringify(data));
         this.toastr.success(data.message)
         // this.currentUserSubject.next(responseData);
       }, (err) => {
         console.log('err', err);
-      });
+      }));
   }
 
-  postRequest(userObj) {
-    let URL = "login";
+  postRequest(url,userObj){
+    let URL = url;
     let headers = new HttpHeaders({
       "Content-Type": "application/json"
     });
     let options = {
       headers: headers
     };
-
-    return new Promise((resolve, reject) => {
+  let promise;
+    promise= new Promise((resolve, reject) => {
       this.http
         .post<any>(
           `${environment.apiUrl}/${URL}`,
@@ -77,6 +71,7 @@ export class AuthService {
           console.log('err', err);
           reject(err);
         });
-    })
+    });
+    return promise;
   }
 }
