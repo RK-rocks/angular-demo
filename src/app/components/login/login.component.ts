@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      mobileNo: ['', [Validators.required, Validators.required, MobileValidator]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.submitted = true;
-    let a = { "mobileNo": this.loginForm.value.mobileNo, "password": this.loginForm.value.password }
+    let a = { "email": this.loginForm.value.email, "password": this.loginForm.value.password }
 
     try {
       const url='login'
@@ -70,9 +70,11 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["/dashboard"]);
       }else{
         this.toastr.warning(res.message)
+        this.loading = false
       }
     } catch (err) {
       console.log('err', err);
+      this.loading = false
     }
 
   }

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../_services/auth.service";
 import { PasswordStrengthValidator } from '../../helpers/password-strength.validator';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -13,48 +13,64 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPasswordForm: FormGroup;
   submitted = false;
-  loading = false
+  loading = false;
+  token;
   constructor(
     protected router: Router,
     private formBuilder: FormBuilder,
     private AuthService: AuthService,
+    private activatedRoute: ActivatedRoute,
+    private toastr: ToastrService
   ) { }
 
   user: any = {};
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params) => {
+      this.token = params.token
+    });
     this.resetPasswordForm = this.formBuilder.group({
-      oldPassword: ['', [Validators.required,Validators.required,PasswordStrengthValidator]],
-      newPassword:['', [Validators.required,Validators.required,PasswordStrengthValidator]]
-  });
+      newPassword: ['', [Validators.required, Validators.required, PasswordStrengthValidator]]
+    });
   }
 
-  registerLink='/'
+  registerLink = '/'
 
-  get f() { 
-    return this.resetPasswordForm.controls; }
+  get f() {
+    return this.resetPasswordForm.controls;
+  }
 
-  onSubmit() {
+  async onSubmit() {
     // TODO: Use EventEmitter with form value
     this.submitted = true;
     this.loading = true
     // TODO: Use EventEmitter with form value
     // stop here if form is invalid
-    
+
     if (this.resetPasswordForm.invalid) {
       this.loading = false
       return;
     }
     this.submitted = true;
-    console.warn(this.resetPasswordForm.value);
-    console.log('+++++++++++++++++++++')
-    console.log(this.resetPasswordForm.value.oldPassword)
-    console.log('+++++++++++++++++++++')
-    console.log(this.resetPasswordForm.value.newPassword)
-    // this.AuthService
-    //   .login(this.resetPasswordForm.value.oldPassword, this.resetPasswordForm.value.newPassword)
-      
-    this.router.navigate(["/"]);
+    
+    let url = 'resetpassword'
+    let reqObj = {
+      newPassword:this.resetPasswordForm.value.newPassword,
+      token:this.token
+    }
+    try {
+      let res = await this.AuthService.postRequest(url,reqObj)
+      console.log(res)
+      if(res.status == 1){
+        this.router.navigate(["/"]);
+        this.toastr.success(res.message)
+      }else{
+        this.toastr.warning(res.message)
+      }
+    } catch (error) {
+      console.log('err', error);
+    }
+
   }
 
 }

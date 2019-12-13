@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../_services/auth.service";
 import { MobileValidator } from '../../helpers/mobile.validator';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forgot-password',
@@ -18,13 +19,14 @@ export class ForgotPasswordComponent implements OnInit {
     protected router: Router,
     private formBuilder: FormBuilder,
     private AuthService: AuthService,
+    private toastr: ToastrService
   ) { }
 
   user: any = {};
 
   ngOnInit() {
     this.forgotPasswordForm = this.formBuilder.group({
-      mobileNo: ['', [Validators.required,Validators.required,MobileValidator]]
+      email: ['', [Validators.required]]
   });
   }
 
@@ -33,7 +35,7 @@ export class ForgotPasswordComponent implements OnInit {
   get f() { 
     return this.forgotPasswordForm.controls; }
 
-  onSubmit() {
+  async onSubmit() {
     // TODO: Use EventEmitter with form value
     this.submitted = true;
     this.loading = true
@@ -45,15 +47,24 @@ export class ForgotPasswordComponent implements OnInit {
       return;
     }
     this.submitted = true;
-    console.warn(this.forgotPasswordForm.value);
-    console.log('+++++++++++++++++++++')
-    console.log(this.forgotPasswordForm.value.mobileNo)
-    console.log('+++++++++++++++++++++')
-    console.log(this.forgotPasswordForm.value.password)
-    // this.AuthService
-    //   .login(this.forgotPasswordForm.value.mobileNo, this.forgotPasswordForm.value.password)
-      
-    this.router.navigate(["/"]);
+    let url = 'forgotpassword'
+    let reqObj = {
+      email:this.forgotPasswordForm.value.email
+    }
+    try {
+      let res = await this.AuthService.postRequest(url,reqObj)
+      console.log(res)
+      if(res.status == 1){
+        this.router.navigate(["/"]);
+        this.toastr.success(res.message)
+      }else{
+        this.loading = false
+        this.toastr.warning(res.message)
+      }
+    } catch (error) {
+      this.loading = false
+      console.log('err', error);
+    }
   }
 
 }

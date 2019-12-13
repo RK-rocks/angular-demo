@@ -18,13 +18,12 @@
                   
                 <div class="row ma-0 mt-10">
                     <div class="col-lg-12 pa-0">
-                      <label class="all-lebel" for="mobileNoId">Mobile No:</label>
+                      <label class="all-lebel" for="emailId">Email:</label>
                     </div>
                     <div class="col-lg-12 pa-0">
-                          <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.mobileNo.errors }" type="text" formControlName="mobileNo">
-                          <div *ngIf="submitted && f.mobileNo.errors" class="invalid-feedback">
-                              <div *ngIf="f.mobileNo.errors.required">Mobile no is required</div>
-                              <span *ngIf="f.mobileNo.errors.mobileNumberError">Mobile no must be validate</span>
+                          <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="text" formControlName="email">
+                          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                              <div *ngIf="f.email.errors.required">Email is required</div>
                           </div>
                           <!-- <div>
                             <span class="color-black">Note :<span class="color-red">Add number in format (+countrycode)number</span></span>
