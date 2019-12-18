@@ -24,6 +24,8 @@
                           <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="text" formControlName="email">
                           <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                               <div *ngIf="f.email.errors.required">Email is required</div>
+                              <!-- <div *ngIf="f.email.errors.email">Email must be a valid email address</div> -->
+                              <div *ngIf="f.email.errors.pattern || f.email.errors.email">Email must be a valid email address</div>
                           </div>
                           <!-- <div>
                             <span class="color-black">Note :<span class="color-red">Add number in format (+countrycode)number</span></span>

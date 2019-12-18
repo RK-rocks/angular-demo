@@ -20,6 +20,9 @@ import { DashboardLayoutsComponent } from './components/dashboard-layouts/dashbo
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { NbSidebarModule, NbSidebarService } from '@nebular/theme';
 import {AuthService} from "./_services/auth.service";
+import { AlertComponent } from './components/helper-components/alert/alert.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,8 @@ import {AuthService} from "./_services/auth.service";
     ForgotPasswordComponent,
     ResetPasswordComponent,
     DashboardLayoutsComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import {AuthService} from "./_services/auth.service";
     NbEvaIconsModule,
     HttpClientModule,
     NbSidebarModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FontAwesomeModule
   ],
   providers: [UserService,NbSidebarService,AuthService],
   bootstrap: [AppComponent]

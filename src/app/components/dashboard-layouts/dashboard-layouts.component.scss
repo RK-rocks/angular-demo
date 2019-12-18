@@ -1,142 +1,145 @@
 @import "../register/register.component.scss";
-.header-nightsky {
-    color: white;
-    background: url(../../../assets/images/nightsky.jpg) no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    padding: 0px;
+.header-fixed {
     width: 100%;
+	padding: 5px 40px;
+    height: 90px;
+	color: #ffffff;
+	box-sizing: border-box;
+	top:-100px;
+
+	-webkit-transition:top 0.3s;
+	transition:top 0.3s;
 }
 
-.nb-theme-dark nb-layout-header nav {
-    padding: 0px;
+.height-50{
+    height: 50px;
 }
 
-.header-nightsky .navbar-nav>li>a {
-    color: white;
-    font-size: 18px;
-    border-radius: 10px;
+.header-fixed .header-limiter {
+	max-width: 1200px;
+	text-align: center;
+	margin: 0 auto;
 }
 
-.header-nightsky .navbar {
-    margin-bottom: 0px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 100%;
-    border-bottom:none;
-    background-color: transparent;
-    min-width: 300px;
-    border: none;
+/*	The header placeholder. It is displayed when the header is fixed to the top of the
+	browser window, in order to prevent the content of the page from jumping up. */
+
+.header-fixed-placeholder{
+	height: 80px;
+	display: none;
 }
 
-.header-nightsky .navbar-default .navbar-nav>.open>a,
-.header-nightsky .navbar-default .navbar-nav>.open>a:focus,
-.header-nightsky .navbar-default .navbar-nav>.open>a:hover {
-    color: #ccc;
-    background-color: transparent;
+/* Logo */
+
+.header-fixed .header-limiter h1 {
+	float: left;
+	font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	margin: 0;
 }
 
-.header-nightsky .nav>li>a:focus,
-.header-nightsky .nav>li>a:hover {
-    color: #ccc;
-    background-color: transparent;
+.header-fixed .header-limiter h1 span {
+	color: #5383d3;
 }
 
-.header-nightsky .navbar-nav>li {
-    margin-right: 20px;
+/* The navigation links */
+
+.header-fixed .header-limiter a {
+	color: #ffffff;
+	text-decoration: none;
 }
 
-.header-nightsky .navbar-nav {
-   margin-top: 12px;
+.header-fixed .header-limiter nav {
+	font:16px Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	float: right;
 }
 
-.header-nightsky .navbar-toggle {
-    background-color: transparent !important;
-    margin-top: 20px;
-    border: 1px solid #fff;
+.header-fixed .header-limiter nav a{
+	display: inline-block;
+	padding: 0 30px;
+	text-decoration:none;
+	color: #ffffff;
+	opacity: 0.9;
 }
 
-.header-nightsky .navbar-toggle .icon-bar {
-    background-color: white;
+.header-fixed .header-limiter nav a:hover{
+	opacity: 1;
 }
 
-.header-nightsky .navbar-brand {
-    color: white;
-    font-size: 50px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.header-fixed .header-limiter nav a.selected {
+	color: #608bd2;
+	pointer-events: none;
+	opacity: 1;
 }
 
-.header-nightsky .navbar-brand:hover {
-    color: #ccc;
+/* Fixed version of the header */
+
+body.fixed .header-fixed {
+	padding: 10px 40px;
+	height: 50px;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
 }
 
-.header-nightsky .hero {
-    text-align: center;
-    margin-top: 80px;
-    margin-bottom: 100px;
+body.fixed .header-fixed-placeholder {
+	display: block;
 }
 
-.header-nightsky .hero h1 {
-    color: white;
-    font-weight: bold;
-    font-size: 60px;
-    margin-bottom: 36px;
+body.fixed .header-fixed .header-limiter h1 {
+	font-size: 24px;
+	line-height: 30px;
+}
+
+body.fixed .header-fixed .header-limiter nav {
+	line-height: 28px;
+	font-size: 13px;
 }
 
 
-.header-nightsky .hero p {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 22px;
-    max-width: 660px;
-    margin: 0 auto 20px;
-    font-weight: normal;
-    line-height: 1.5;
+/* Making the header responsive */
+
+@media all and (max-width: 600px) {
+
+	.header-fixed {
+		padding: 20px 0;
+		height: 75px;
+	}
+
+	.header-fixed .header-limiter h1 {
+		float: none;
+		margin: -8px 0 10px;
+		text-align: center;
+		font-size: 24px;
+		line-height: 1;
+	}
+
+	.header-fixed .header-limiter nav {
+		line-height: 1;
+		float:none;
+	}
+
+	.header-fixed .header-limiter nav a {
+		font-size: 13px;
+	}
+
+	body.fixed .header-fixed {
+		display: none;
+	}
+
 }
 
-.header-nightsky .btn-primary {
-    color: #fff;
-    background-color: transparent;
-    border-color: #fffbfb !important;
-    outline:none;
-    margin-right: 20px;
-    margin-top: 20px;
-    font-size: 24px;
-    padding: 18px 24px;
-    transition:0.2s background-color;
-}
+/*
+	 We are clearing the body's margin and padding, so that the header fits properly.
+	 We are also adding a height to demonstrate the scrolling behavior. You can remove
+	 these styles.
+ */
 
-.header-nightsky .btn-primary:hover {
-    background-color:rgba(255,255,255,0.1);
-}
-
-.header-nightsky .btn-primary:active {
-    transform:translateY(1px);
-}
-
-@media screen and (max-width: 767px) {
-
-    .header-nightsky .navbar-default .navbar-nav .open .dropdown-menu>li>a{
-        color: #fff;
-        font-size: 16px;
-    }
-
-    .header-nightsky .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{
-        color: #ccc;
-    }
-
-    .header-nightsky .navbar-collapse {
-        margin-left: 20px;
-        border-top: none;
-        box-shadow: none;
-    }
-
-    .header-nightsky .hero{
-        margin-top: 40px;
-        margin-bottom: 40px;
-    }
-
-    .header-nightsky .hero h1{
-        font-size: 42px;
-    }
+body {
+	margin: 0;
+	padding: 0;
+	height: 1500px;
 }

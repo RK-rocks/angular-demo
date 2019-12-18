@@ -1,1 +1,29 @@
-<router-outlet></router-outlet>
+<nb-layout>
+    <nb-layout-header fixed>
+        <header class="header-fixed">
+            <div class="header-limiter">
+                <h1 style="padding:5px 0px"><a href="#"><img class="height-50" src="../../../assets/images/download.png"
+                            alt="logo" /></a></h1>
+                <nav>
+                    <a href="#">Home</a>
+                    <a href="#" class="selected"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My account</a>
+                    <a href="#">My account</a>
+                    <a href="#">About</a>
+                    <a href="#">Faq</a>
+                    <a href="#">Contact</a>
+                </nav>
+            </div>
+        </header>
+    </nb-layout-header>
+    <nb-layout-column>
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+    </nb-layout-column>
+
+    <nb-layout-footer fixed>
+    </nb-layout-footer>
+
+</nb-layout>
+
+<!-- <router-outlet></router-outlet> -->
