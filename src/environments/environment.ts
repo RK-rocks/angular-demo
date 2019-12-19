@@ -13,5 +13,5 @@ export const environment = {
   //   instrumentationKey: "c219e8a2-7676-4c9d-8eeb-3f17eecf9b83"
   // },
   production: false,
-  apiUrl: "http://localhost:4060",
+  apiUrl: "http://localhost:4065",
 };

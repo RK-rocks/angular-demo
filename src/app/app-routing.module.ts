@@ -7,8 +7,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { DashboardLayoutsComponent } from './components/dashboard-layouts/dashboard-layouts.component'
 import { ChangePasswordComponent } from './components/change-password/change-password.component'
-
+import {UserProfileComponent} from './components/user-profile/user-profile.component'
 import { AuthGuard, TokenGuard } from './_guards';
+import { userProfileDetailsResolver} from './components/user-profile/user-profile.resolve';
 
 const routes: Routes = [
   {
@@ -42,6 +43,13 @@ const routes: Routes = [
       {
         path: "change-password",
         component: ChangePasswordComponent
+      },
+      {
+        path: "update-profile",
+        resolve: {
+          event: userProfileDetailsResolver,
+        },
+        component: UserProfileComponent
       }
     ]
   },

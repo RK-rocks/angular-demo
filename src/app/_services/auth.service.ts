@@ -74,4 +74,31 @@ export class AuthService {
     });
     return promise;
   }
+
+  postFormRequest(url,userObj){
+    console.log("inside req");
+    console.log(userObj)
+    let URL = url;
+    let headers = new HttpHeaders({
+      "Content-Type": "multipart/form-data"
+    });
+    let options = {
+      headers: headers
+    };
+  let promise;
+    promise= new Promise((resolve, reject) => {
+      this.http
+        .post<any>(
+          `${environment.apiUrl}/${URL}`,
+          JSON.stringify(userObj),
+          options
+        ).subscribe((data) => {
+          resolve(data);
+        }, (err) => {
+          console.log('err', err);
+          reject(err);
+        });
+    });
+    return promise;
+  }
 }

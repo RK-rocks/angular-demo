@@ -1,16 +1,31 @@
 <nb-layout>
     <nb-layout-header fixed>
+        
         <header class="header-fixed">
             <div class="header-limiter">
-                <h1 style="padding:5px 0px"><a href="#"><img class="height-50" src="../../../assets/images/download.png"
+                <h1 style="padding:5px 0px;margin-top:10px" class="mt-10"><a href="#">
+                    <img class="height-50" src="../../../assets/images/download.png"
                             alt="logo" /></a></h1>
                 <nav>
-                    <a href="#">Home</a>
-                    <a href="#" class="selected"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My account</a>
-                    <a href="#">My account</a>
-                    <a href="#">About</a>
-                    <a href="#">Faq</a>
-                    <a href="#">Contact</a>
+                    <a [routerLink]="['/']" class="dropbtn">Home</a>
+                    <div  class="dropdown">
+                        <a href="#" class="selected dropbtn"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My account</a>
+                        <div class="dropdown-content">
+                            <div class="arrow-up"></div>
+                            <div class="row">
+                                <div class="column">
+                                    <a [routerLink]="['update-profile']" class="color-dropdown"> <i class="fa fa-user-circle fa-define-class" aria-hidden="true"></i> User Profile</a>
+                                    <a href="#" class="color-dropdown"> <i class="fa fa-user-circle-o fa-define-class" aria-hidden="true"></i> Address</a>
+                                    <a href="#" class="color-dropdown"><i class="fa fa-user-circle-o fa-define-class" aria-hidden="true"></i> Address modle</a>
+                                    <a href="#" class="color-dropdown"><i class="fa fa-user-circle-o fa-define-class" aria-hidden="true"></i> Order</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="dropbtn">My account</a>
+                    <a href="#" class="dropbtn">About</a>
+                    <a href="#" class="dropbtn">Faq</a>
+                    <a href="#" class="dropbtn">Contact</a>
                 </nav>
             </div>
         </header>

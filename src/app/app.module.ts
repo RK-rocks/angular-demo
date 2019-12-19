@@ -22,6 +22,7 @@ import { NbSidebarModule, NbSidebarService } from '@nebular/theme';
 import {AuthService} from "./_services/auth.service";
 import { AlertComponent } from './components/helper-components/alert/alert.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ResetPasswordComponent,
     DashboardLayoutsComponent,
     ChangePasswordComponent,
-    AlertComponent
+    AlertComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
