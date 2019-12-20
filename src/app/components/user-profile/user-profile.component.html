@@ -15,7 +15,7 @@
                         <div class="background"></div>
                       </label>
                       <br/>
-                      <input id="fileInput" type='file' (change)="onSelectFile($event)">
+                      <input id="fileInput"formControlName="image" type='file' (change)="onSelectFile($event)">
                       <!-- <i *ngIf="url" (click)="delete()" >delete</i> -->
                       <a *ngIf="url" (click)="delete()" class="close"></a>
                 </div>

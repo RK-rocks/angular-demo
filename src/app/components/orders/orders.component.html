@@ -1,0 +1,38 @@
+<div class="row ma-0 mb-40">
+    <div class="col-lg-6">
+        <div class="mlr-auto pb-0 pt-4">
+            <span class="title">Order Details</span>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card-footer pb-0 pt-3 float-right">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div> 
+</div>
+<div class="table-responsive">
+    <table class="table color-white">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Order No</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Color</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of letorderData | paginate: { itemsPerPage: 8, currentPage: p }">
+            <th scope="row">{{order.id}}</th>
+            <td>{{order.order_id}}</td>
+            <td>{{order.tbl_product.name}}</td>
+            <td *ngFor="let color of order.tbl_product.tbl_product_colors">
+                {{color.color}}
+            </td>
+            <td>{{order.total_item}}</td>
+            <td>{{order.createdAt}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -10,6 +10,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import {UserProfileComponent} from './components/user-profile/user-profile.component'
 import { AuthGuard, TokenGuard } from './_guards';
 import { userProfileDetailsResolver} from './components/user-profile/user-profile.resolve';
+import { ordersDetailsResolver} from './components/orders/orders.resolve';
+import {AddressListingComponent} from './components/address-listing/address-listing.component'
+import {OrdersComponent} from './components/orders/orders.component'
 
 const routes: Routes = [
   {
@@ -50,6 +53,20 @@ const routes: Routes = [
           event: userProfileDetailsResolver,
         },
         component: UserProfileComponent
+      },
+      {
+        path: "addres-list",
+        resolve: {
+          event: userProfileDetailsResolver,
+        },
+        component: AddressListingComponent
+      },
+      {
+        path: "order-list",
+        resolve: {
+          event: ordersDetailsResolver,
+        },
+        component: OrdersComponent
       }
     ]
   },

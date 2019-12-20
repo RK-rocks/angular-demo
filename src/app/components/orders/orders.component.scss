@@ -1,0 +1,49 @@
+@import "../register/register.component.scss";
+
+.color-white{
+    color: #ffffff;
+}
+
+.mb-40{
+    margin-bottom: 40px;
+}
+
+.title{
+    color: #ffffff;
+}
+
+.ngx-pagination a:hover{
+    color: #ffffff !important;
+}
+
+.ngx-pagination a, .ngx-pagination button {
+    color: #ffffff !important;
+    display: block;
+    padding: 0.1875rem 0.625rem;
+    border-radius: 0;
+}
+
+.ngx-pagination .pagination-previous a::before,
+.ngx-pagination .pagination-previous.disabled::before,
+.ngx-pagination .pagination-next a::after,
+.ngx-pagination .pagination-next.disabled::after { 
+  content: '' !important; 
+}
+
+.ngx-pagination {
+    padding-left: 0px !important;
+  }
+
+  
+  .ngx-pagination .current,
+  .btn-info {
+    background: #b85217 !important;
+    border: transparent !important;
+    border-radius: 20px !important;
+  }
+  
+  .ngx-pagination .current:hover {
+    background: #17a2b8 !important;
+    border-radius: 20px !important; 
+    border: transparent !important;
+  }

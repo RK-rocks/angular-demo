@@ -79,9 +79,8 @@ export class AuthService {
     console.log("inside req");
     console.log(userObj)
     let URL = url;
-    let headers = new HttpHeaders({
-      "Content-Type": "multipart/form-data"
-    });
+    let headers = new HttpHeaders;
+    headers = headers.append('Content-Type', 'application/json');
     let options = {
       headers: headers
     };

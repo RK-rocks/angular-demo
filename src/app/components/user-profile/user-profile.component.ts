@@ -34,6 +34,7 @@ export class UserProfileComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required,Validators.maxLength(12)]],
       lastName: ['', [Validators.required,Validators.maxLength(12)]],
+      image:[]
   });
 
 
@@ -64,29 +65,38 @@ preview() {
     return this.registerForm.controls; }
 
     async onSubmit() {
+      console.log(this.registerForm.value)
       this.submitted = true;
       this.loading = true
       
       if (this.registerForm.invalid) {
-        console.log(this.registerForm)
+        console.log(this.registerForm.value)
         this.loading = false
         return;
       }else{
         this.submitted = true;
         try {
           const urlI='user/updateprofile'
-          const formData = new FormData();
-          formData.append('last_name', this.registerForm.value.lastName);
-          formData.append('first_name', this.registerForm.value.firstName);
+          const formData = new FormBuilder;
+          console.log("++++++++++++++++++++++++++++++++++++++++")
+          let firstName = this.registerForm.get('firstName').value
+          let lastName = this.registerForm.get('lastName').value
+          let image = this.fileData
+          let sessionData:any = JSON.parse(localStorage.getItem('currentUser'))
+          let user_id = sessionData.userId
+          let dataObj = {
+            "first_name":firstName,
+            "last_name":lastName,
+            "user_id":user_id,
+            "image":image
+          }
 
-          formData.append('test', this.registerForm.value.firstName);
-
-
-
-        const res = await this.AuthService.postFormRequest(urlI,formData);
+          console.log('formData',formData)
+        const res = await this.AuthService.postFormRequest(urlI,dataObj);
         if(res.status == 1){
           this.toastr.success(res.message)
-          this.router.navigate(["/"]);
+          this.loading = false;
+          // this.router.navigate(["/"]);
         }else{
           this.loading = false;
           this.toastr.warning(res.message)
@@ -104,7 +114,7 @@ preview() {
 
       reader.onload = (event) => { // called once readAsDataURL is completed
         // console.log(event.target.result)
-        this.url = event.target.result;
+        // this.url = event.target.result;
       }
     }
   }

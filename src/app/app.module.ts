@@ -23,6 +23,10 @@ import {AuthService} from "./_services/auth.service";
 import { AlertComponent } from './components/helper-components/alert/alert.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AddressListingComponent } from './components/address-listing/address-listing.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { JwPaginationComponent } from 'jw-angular-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,10 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     DashboardLayoutsComponent,
     ChangePasswordComponent,
     AlertComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AddressListingComponent,
+    OrdersComponent,
+    JwPaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     HttpClientModule,
     NbSidebarModule,
     ToastrModule.forRoot(),
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxPaginationModule
   ],
   providers: [UserService,NbSidebarService,AuthService],
   bootstrap: [AppComponent]
