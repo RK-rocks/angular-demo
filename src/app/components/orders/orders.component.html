@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let order of letorderData | paginate: { itemsPerPage: 8, currentPage: p }">
+        <tr *ngFor="let order of letorderData | paginate: { itemsPerPage: 6, currentPage: p }">
             <th scope="row">{{order.id}}</th>
             <td>{{order.order_id}}</td>
             <td>{{order.tbl_product.name}}</td>

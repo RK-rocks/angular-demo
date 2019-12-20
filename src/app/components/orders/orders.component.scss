@@ -23,6 +23,10 @@
     border-radius: 0;
 }
 
+.ngx-pagination a:hover, .ngx-pagination button:hover {
+  background: #ffd942;
+}
+
 .ngx-pagination .pagination-previous a::before,
 .ngx-pagination .pagination-previous.disabled::before,
 .ngx-pagination .pagination-next a::after,
