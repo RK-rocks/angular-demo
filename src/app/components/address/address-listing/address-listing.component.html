@@ -1,0 +1,41 @@
+<div class="row ma-0 mb-40">
+  <div class="col-lg-6">
+      <div class="mlr-auto pb-0 pt-4">
+          <span class="title">Address Details</span>
+      </div>
+  </div>
+  <div class="col-lg-6">
+      <div class="card-footer pb-0 pt-3 float-right">
+          <Button class="btn btn-primary" click=(addAddress)><i class="fa fa-plus"></i> Add address</Button>
+      </div>
+  </div> 
+</div>
+<div class="table-responsive">
+    <table class="table color-white">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">address</th>
+          <th scope="col">is Default</th>
+          <th scope="col">Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let address of letAddressData | paginate: { itemsPerPage: 6, currentPage: p }">
+          <th scope="row">{{address.id}}</th>
+          <td>{{address.address}}</td>
+          <td>{{address.is_default}}</td>
+          <td>{{address.createdAt}}</td>
+          <td>
+            <div>
+              <i class="fa fa-trash-o cursor-pointer" tooltip="Delete" placement="left" delay="100" aria-hidden="true" (click)="openConfirmationDialog(address)"></i>
+            </div>
+            <div>
+              <i class="fa fa-pencil-square-o cursor-pointer" tooltip="Edit" placement="left" delay="100" aria-hidden="true" aria-hidden="true" click=(editAddress)></i>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

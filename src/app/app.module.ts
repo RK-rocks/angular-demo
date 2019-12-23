@@ -19,14 +19,19 @@ import { ToastrModule } from 'ngx-toastr';
 import { DashboardLayoutsComponent } from './components/dashboard-layouts/dashboard-layouts.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { NbSidebarModule, NbSidebarService } from '@nebular/theme';
-import {AuthService} from "./_services/auth.service";
+import { AuthService } from "./_services/auth.service";
 import { AlertComponent } from './components/helper-components/alert/alert.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { AddressListingComponent } from './components/address-listing/address-listing.component';
-import { OrdersComponent } from './components/orders/orders.component';
+import { AddressListingComponent } from './components/address/address-listing/address-listing.component';
+import { OrdersComponent } from './components/orders/orders-list/orders.component';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TooltipDirective } from './components/helper-components/tooltip/tooltip.directive';
+import { AddressAddComponent } from './components/address/address-add/address-add.component'
+
+import { ConfirmationDialogComponent } from './components/helper-components/confirmation-dialog/confirmation-dialog.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -42,7 +47,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UserProfileComponent,
     AddressListingComponent,
     OrdersComponent,
-    JwPaginationComponent
+    JwPaginationComponent,
+    TooltipDirective,
+    AddressAddComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +65,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NbSidebarModule,
     ToastrModule.forRoot(),
     FontAwesomeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule
   ],
-  providers: [UserService,NbSidebarService,AuthService],
-  bootstrap: [AppComponent]
+  providers: [UserService, NbSidebarService, AuthService,
+    // ConfirmationDialogService
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmationDialogComponent],
 })
 export class AppModule { }

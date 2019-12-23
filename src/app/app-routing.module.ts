@@ -7,12 +7,14 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { DashboardLayoutsComponent } from './components/dashboard-layouts/dashboard-layouts.component'
 import { ChangePasswordComponent } from './components/change-password/change-password.component'
-import {UserProfileComponent} from './components/user-profile/user-profile.component'
+import { UserProfileComponent } from './components/user-profile/user-profile.component'
 import { AuthGuard, TokenGuard } from './_guards';
-import { userProfileDetailsResolver} from './components/user-profile/user-profile.resolve';
-import { ordersDetailsResolver} from './components/orders/orders.resolve';
-import {AddressListingComponent} from './components/address-listing/address-listing.component'
-import {OrdersComponent} from './components/orders/orders.component'
+import { userProfileDetailsResolver } from './components/user-profile/user-profile.resolve';
+import { ordersDetailsResolver } from './components/orders/orders-list/orders.resolve';
+import { addressDetailsResolver } from './components/address/address-listing/address-listing.resolve';
+import { AddressListingComponent } from './components/address/address-listing/address-listing.component'
+import { AddressAddComponent } from './components/address/address-add/address-add.component'
+import { OrdersComponent } from './components/orders/orders-list/orders.component'
 
 const routes: Routes = [
   {
@@ -57,9 +59,14 @@ const routes: Routes = [
       {
         path: "addres-list",
         resolve: {
-          event: userProfileDetailsResolver,
+          event: addressDetailsResolver,
         },
-        component: AddressListingComponent
+        component: AddressListingComponent,
+        runGuardsAndResolvers: 'always'
+      },
+      {
+        path: "addres-add",
+        component: AddressAddComponent
       },
       {
         path: "order-list",
@@ -73,7 +80,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    onSameUrlNavigation: 'reload'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
