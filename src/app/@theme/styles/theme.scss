@@ -7,6 +7,14 @@
   color:#ffbe2b !important
 }
 
+.ngx-pagination a:hover, .ngx-pagination button:hover {
+  background: none !important;
+}
+
+.ngx-pagination .current {
+  background: #6226d8bf !important;
+}
+
 $nb-themes: nb-register-theme((
   font-family-secondary: font-family-primary,
   layout-padding-top: 2.25rem,

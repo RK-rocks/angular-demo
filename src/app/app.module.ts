@@ -29,7 +29,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TooltipDirective } from './components/helper-components/tooltip/tooltip.directive';
 import { AddressAddComponent } from './components/address/address-add/address-add.component'
-
+import {EncrDecrService} from './_services/encr-decr.service';
 import { ConfirmationDialogComponent } from './components/helper-components/confirmation-dialog/confirmation-dialog.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -68,7 +68,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgxPaginationModule,
     NgbModule
   ],
-  providers: [UserService, NbSidebarService, AuthService,
+  providers: [UserService, NbSidebarService, AuthService,EncrDecrService
     // ConfirmationDialogService
   ],
   bootstrap: [AppComponent],

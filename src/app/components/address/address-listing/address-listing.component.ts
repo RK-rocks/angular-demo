@@ -4,7 +4,7 @@ import { ConfirmationDialogService } from '../../helper-components/confirmation-
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from "../../../_services/auth.service";
 import { async } from '@angular/core/testing';
-
+import {EncrDecrService} from '../../../_services/encr-decr.service';
 
 @Component({
   selector: 'app-address-listing',
@@ -21,18 +21,35 @@ export class AddressListingComponent implements OnInit {
     private AuthService: AuthService,
     private toastr: ToastrService,
     protected router: Router,
+    private EncrDecr: EncrDecrService
   ) { }
 
   ngOnInit() {
     // this.letAddressData = this.activatedRoute.snapshot.data['event'].data.addressData;
     this.activatedRoute.data.subscribe(data => {
+      console.log(data)
       this.letAddressData = data.event.data.addressData;
     });
+
+    var encrypted = this.EncrDecr.set('123456$#@$^@1ERF', 'password@123456');
+    var decrypted = this.EncrDecr.get('123456$#@$^@1ERF', encrypted);
+   
+    console.log('Encrypted :' + encrypted);
+    console.log('Decrypted :' + decrypted);
   }
 
   public addAddress() {
     console.log("here")
-    this.router.navigate(['/addres-add']);
+    this.router.navigate(['dashboard/addres-add']);
+  }
+
+  editAddress(address){
+    let encrypted = this.EncrDecr.set('123456$#@$^@1ERF', address.id);
+    //var decrypted = this.EncrDecr.get('123456$#@$^@1ERF', encrypted);
+   
+    console.log('Encrypted :' + encrypted);
+    // console.log('Decrypted :' + decrypted);
+    this.router.navigate(['/dashboard/addres-add/'+encrypted]);
   }
 
   public openConfirmationDialog(address) {

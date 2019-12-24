@@ -6,7 +6,7 @@
   </div>
   <div class="col-lg-6">
       <div class="card-footer pb-0 pt-3 float-right">
-          <Button class="btn btn-primary" click=(addAddress)><i class="fa fa-plus"></i> Add address</Button>
+          <Button class="btn btn-primary submit-btn" (click)=addAddress()><i class="fa fa-plus"></i> Add</Button>
       </div>
   </div> 
 </div>
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let address of letAddressData | paginate: { itemsPerPage: 6, currentPage: p }">
+        <tr *ngFor="let address of letAddressData | paginate: { itemsPerPage: 3, currentPage: p }">
           <th scope="row">{{address.id}}</th>
           <td>{{address.address}}</td>
           <td>{{address.is_default}}</td>
@@ -32,10 +32,20 @@
               <i class="fa fa-trash-o cursor-pointer" tooltip="Delete" placement="left" delay="100" aria-hidden="true" (click)="openConfirmationDialog(address)"></i>
             </div>
             <div>
-              <i class="fa fa-pencil-square-o cursor-pointer" tooltip="Edit" placement="left" delay="100" aria-hidden="true" aria-hidden="true" click=(editAddress)></i>
+              <i class="fa fa-pencil-square-o cursor-pointer" tooltip="Edit" placement="left" delay="100" aria-hidden="true" aria-hidden="true" (click)=editAddress(address)></i>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
+  <div class="row ma-0 mb-40">
+    <div class="col-lg-6">
+        
+    </div>
+    <div class="col-lg-6">
+        <div class="card-footer pb-0 pt-3 float-right">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div> 
+</div>

@@ -1,59 +1,31 @@
 
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="addAddressForm" (ngSubmit)="onSubmit()">
     <div id="vcontainer">
       <div id="hcontainer">
         <div id="content">
             <div class="row ma-0"> 
               <div class="mlr-auto">
-                <span class="title">Update your profile</span>
+                <span class="title">Add address</span>
               </div>
             </div>
-            <div class="form-group row ma-0 mt-10">
-                <label class="hoverable mlr-auto" for="fileInput">
-                    <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'"> 
-                    <div class="hover-text">Choose file</div>
-                    <div class="background"></div>
-                  </label>
-                  <br/>
-                  <input type="file" id="fileInput" #fileUploader formControlName="image" type='file' (change)="onSelectFile($event)">
-                  <!-- <input id="fileInput" #fileUploader2 formControlName="image" type='file' (change)="onSelectFile($event)"> -->
-                  <!-- <i *ngIf="url" (click)="delete()" >delete</i> -->
-                  <a *ngIf="url" (click)="delete();fileInput.value=null" class="close"></a>
-            </div>
+            
 
-            <!-- <input type="file" #fileUploader />
-            <a (click)="fileUploader.value = null;delete()">Reset from UI</a> &nbsp;
-            <button (click)="resetFileUploader()">Reset from Component</button>
-               -->
+            
             <div class="form-group row ma-0 mt-10">
                   <div class="col-lg-12 pa-0 mlr-auto">
-                      <label class="all-lebel">First Name:</label>
+                      <label class="all-lebel">Address:</label>
                   </div>
                   <div class="col-lg-12 pa-0 mlr-auto">
-                    <input type="text" formControlName="firstName" [(ngModel)]="userData.first_name" class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
-                        <div *ngIf="f.firstName.errors.maxlength">First Name must be less then 12 characters</div>
+                    <textarea type="text" formControlName="address"  class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
+                    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                        <div *ngIf="f.address.errors.required">Address is required</div>
                     </div>
                   </div>
               </div>
-              <div class="row ma-0 mt-10">
-                  <div class="col-lg-12 pa-0">
-                    <label class="all-lebel" for="lastNameId">Last Name:</label>
-                  </div>
-                  <div class="col-lg-12 pa-0">
-                        <input class="input-forms form-control" [(ngModel)]="userData.last_name" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" type="text" formControlName="lastName">
-                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                            <div *ngIf="f.lastName.errors.maxlength">Last Name must be less then 12 characters</div>
-                        </div>
-                    </div>
-              </div>
-              
               
                 <div class="row ma-0 mt-20">
                   <div class="mlr-auto">
-                    <button class="btn btn-primary submit-btn" type="submit">Update</button>
+                    <button [disabled] = 'loading' class="btn btn-primary submit-btn" type="submit">Add</button>
                     <span *ngIf="loading" class="spinner"></span>
                   </div>
                 </div>  
