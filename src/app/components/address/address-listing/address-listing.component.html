@@ -32,7 +32,7 @@
               <i class="fa fa-trash-o cursor-pointer" tooltip="Delete" placement="left" delay="100" aria-hidden="true" (click)="openConfirmationDialog(address)"></i>
             </div>
             <div>
-              <i class="fa fa-pencil-square-o cursor-pointer" tooltip="Edit" placement="left" delay="100" aria-hidden="true" aria-hidden="true" (click)=editAddress(address)></i>
+              <i class="fa fa-pencil-square-o cursor-pointer" tooltip="Edit" ng-disabled="isDisabled" placement="left" delay="100" aria-hidden="true" aria-hidden="true" (click)=editAddress(address)></i>
             </div>
           </td>
         </tr>

@@ -12,9 +12,11 @@ import { AuthGuard, TokenGuard } from './_guards';
 import { userProfileDetailsResolver } from './components/user-profile/user-profile.resolve';
 import { ordersDetailsResolver } from './components/orders/orders-list/orders.resolve';
 import { addressDetailsResolver } from './components/address/address-listing/address-listing.resolve';
+import { addressEditDataResolver } from './components/address/address-add/address-edit.resolve';
 import { AddressListingComponent } from './components/address/address-listing/address-listing.component'
 import { AddressAddComponent } from './components/address/address-add/address-add.component'
 import { OrdersComponent } from './components/orders/orders-list/orders.component'
+import {ProductsListingComponent} from './components/products/products-listing/products-listing.component'
 
 const routes: Routes = [
   {
@@ -50,6 +52,10 @@ const routes: Routes = [
         component: ChangePasswordComponent
       },
       {
+        path: "",
+        component: ProductsListingComponent
+      },
+      {
         path: "update-profile",
         resolve: {
           event: userProfileDetailsResolver,
@@ -67,6 +73,13 @@ const routes: Routes = [
       {
         path: "addres-add",
         component: AddressAddComponent
+      },
+      {
+        path: "addres-add/:id",
+        component: AddressAddComponent,
+        resolve:{
+          event:addressEditDataResolver
+        }
       },
       {
         path: "order-list",

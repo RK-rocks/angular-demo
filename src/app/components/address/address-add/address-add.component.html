@@ -16,7 +16,7 @@
                       <label class="all-lebel">Address:</label>
                   </div>
                   <div class="col-lg-12 pa-0 mlr-auto">
-                    <textarea type="text" formControlName="address"  class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
+                    <textarea rows=4 type="text" [(ngModel)]="letAddressData.address" formControlName="address"  class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
                     <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
                         <div *ngIf="f.address.errors.required">Address is required</div>
                     </div>
@@ -25,7 +25,10 @@
               
                 <div class="row ma-0 mt-20">
                   <div class="mlr-auto">
-                    <button [disabled] = 'loading' class="btn btn-primary submit-btn" type="submit">Add</button>
+                    <button *ngIf="editMode;else other_content" [disabled] = 'loading' class="btn btn-primary submit-btn" type="submit">Edit</button>
+                    <ng-template #other_content>
+                      <button [disabled] = 'loading' class="btn btn-primary submit-btn" type="submit">Add</button>
+                    </ng-template>
                     <span *ngIf="loading" class="spinner"></span>
                   </div>
                 </div>  

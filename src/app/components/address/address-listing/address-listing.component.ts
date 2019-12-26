@@ -15,6 +15,9 @@ export class AddressListingComponent implements OnInit {
   letAddressData = []
   loading = false
   submitted = false
+  id: number;
+  isDisabled = false;
+  editMode:any
   constructor(
     private activatedRoute: ActivatedRoute,
     private confirmationDialogService: ConfirmationDialogService,
@@ -30,12 +33,6 @@ export class AddressListingComponent implements OnInit {
       console.log(data)
       this.letAddressData = data.event.data.addressData;
     });
-
-    var encrypted = this.EncrDecr.set('123456$#@$^@1ERF', 'password@123456');
-    var decrypted = this.EncrDecr.get('123456$#@$^@1ERF', encrypted);
-   
-    console.log('Encrypted :' + encrypted);
-    console.log('Decrypted :' + decrypted);
   }
 
   public addAddress() {
@@ -45,15 +42,20 @@ export class AddressListingComponent implements OnInit {
 
   editAddress(address){
     let encrypted = this.EncrDecr.set('123456$#@$^@1ERF', address.id);
-    //var decrypted = this.EncrDecr.get('123456$#@$^@1ERF', encrypted);
-   
-    console.log('Encrypted :' + encrypted);
+    var readyText = encrypted.toString().replace('+','xMl3Jk').replace('/','Por21Ld').replace('=','Ml32')
+    if(readyText.includes('/')){
+      readyText = readyText.replace('/','Por21Ld')
+    }
+    // while (readyText.includes('/')) {
+    //   readyText = encrypted.toString().replace('+','xMl3Jk').replace('/','Por21Ld').replace('=','Ml32')
+    // }
+    //var decrypted = 08eQVAwnz73U6P0EK20Bsg== this.EncrDecr.get('123456$#@$^@1ERF', encrypted);
+    this.isDisabled = true
     // console.log('Decrypted :' + decrypted);
-    this.router.navigate(['/dashboard/addres-add/'+encrypted]);
+    this.router.navigate(['/dashboard/addres-add/'+readyText]);
   }
 
   public openConfirmationDialog(address) {
-    console.log(address.id)
     let titleMsg = 'Please confirm..'
     let msg = 'Do you really want to delete this address?'
     let classSubmitbtn = 'submit-btn'

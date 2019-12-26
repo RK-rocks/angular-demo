@@ -1,9 +1,11 @@
 import { Directive, Input, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { Router ,NavigationEnd} from "@angular/router";
 
 @Directive({
   selector: '[tooltip]'
 })
 export class TooltipDirective {
+  
   @Input('tooltip') tooltipTitle: string;
   @Input() placement: string;
   @Input() delay: any;
@@ -11,7 +13,14 @@ export class TooltipDirective {
   // 호스트 요소와 tooltip 요소 간의 거리
   offset = 10;
 
-  constructor(private el: ElementRef, private renderer: Renderer2) { }
+  constructor(private el: ElementRef, private renderer: Renderer2,private router: Router) {
+    router.events.subscribe((val) => {
+      // see also 
+      if(val instanceof NavigationEnd){
+        this.hide();
+      } 
+    });
+   }
 
   @HostListener('mouseenter') onMouseEnter() {
     if (!this.tooltip) { this.show(); }

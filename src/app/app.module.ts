@@ -32,6 +32,7 @@ import { AddressAddComponent } from './components/address/address-add/address-ad
 import {EncrDecrService} from './_services/encr-decr.service';
 import { ConfirmationDialogComponent } from './components/helper-components/confirmation-dialog/confirmation-dialog.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductsListingComponent } from './components/products/products-listing/products-listing.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     JwPaginationComponent,
     TooltipDirective,
     AddressAddComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    ProductsListingComponent
   ],
   imports: [
     BrowserModule,
