@@ -3,8 +3,56 @@
 // @nebular out of the box themes
 @import '~@nebular/theme/styles/themes';
 
+$class: ml-;
+// loops through 100 times
+@for $i from 1 through 100 {
+
+  // for each $col_#{i} 
+  .#{$class}#{$i} {
+
+    // set the background-color to cornflowerblue and 
+    // each time lighten the color slightly
+    // background-color: darken(cornflowerblue, 0% + ($i / 2));
+    margin-left: $i+px;
+  }
+}
+
+$class: mt-;
+// loops through 100 times
+@for $i from 1 through 100 {
+
+  // for each $col_#{i} 
+  .#{$class}#{$i} {
+
+    // set the background-color to cornflowerblue and 
+    // each time lighten the color slightly
+    // background-color: darken(cornflowerblue, 0% + ($i / 2));
+    margin-top: $i+px;
+  }
+}
+
+.curser-pointer{
+  cursor: pointer;
+}
+
 .ngx-pagination a{
   color:#ffbe2b !important
+}
+
+.nb-theme-dark nb-layout .layout .layout-container .content nb-layout-footer nav a {
+  text-decoration: none;
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+.nb-theme-dark nb-layout .layout .layout-container .content .columns nb-layout-column{
+  height: 505px;
+  overflow: auto;
+}
+
+.nb-theme-dark nb-layout .layout .layout-container .content nb-layout-footer nav{
+  padding: 0;
+  padding-top: 10px;
 }
 
 .ngx-pagination a:hover, .ngx-pagination button:hover {

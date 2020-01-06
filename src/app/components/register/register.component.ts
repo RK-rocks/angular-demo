@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { PasswordStrengthValidator } from '../../helpers/password-strength.validator';
 import { MobileValidator } from '../../helpers/mobile.validator';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from "../../_services/auth.service";
+import { AuthLoginService } from "../../_services/auth.service";
 
 
 @Component({
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     protected router: Router,
     private formBuilder: FormBuilder,
-    private AuthService: AuthService,
+    private AuthLoginService: AuthLoginService,
     private toastr: ToastrService
   ) { }
 
@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
         this.submitted = true;
         try {
           const url='register'
-        const res = await this.AuthService.postRequest(url,this.registerForm.value);
+        const res = await this.AuthLoginService.postRequest(url,this.registerForm.value);
         if(res.status == 1){
           this.toastr.success(res.message)
           this.router.navigate(["/"]);

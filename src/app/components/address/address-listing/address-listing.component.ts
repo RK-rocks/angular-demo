@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { ConfirmationDialogService } from '../../helper-components/confirmation-dialog/confirmation-dialog.service';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from "../../../_services/auth.service";
+import { AuthLoginService } from "../../../_services/auth.service";
 import { async } from '@angular/core/testing';
 import {EncrDecrService} from '../../../_services/encr-decr.service';
 
@@ -21,7 +21,7 @@ export class AddressListingComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private confirmationDialogService: ConfirmationDialogService,
-    private AuthService: AuthService,
+    private AuthLoginService: AuthLoginService,
     private toastr: ToastrService,
     protected router: Router,
     private EncrDecr: EncrDecrService
@@ -72,7 +72,7 @@ export class AddressListingComponent implements OnInit {
               address_id: address.id,
               user_id: user_id
             }
-            let res = await this.AuthService.postRequest(url, reqObj);
+            let res = await this.AuthLoginService.postRequest(url, reqObj);
             if (res.status == 1) {
               this.router.navigate(['/dashboard/addres-list']);
               this.toastr.success(res.message)

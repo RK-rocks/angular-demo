@@ -19,7 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { DashboardLayoutsComponent } from './components/dashboard-layouts/dashboard-layouts.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { NbSidebarModule, NbSidebarService } from '@nebular/theme';
-import { AuthService } from "./_services/auth.service";
+import { AuthLoginService } from "./_services/auth.service";
 import { AlertComponent } from './components/helper-components/alert/alert.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -33,6 +33,24 @@ import {EncrDecrService} from './_services/encr-decr.service';
 import { ConfirmationDialogComponent } from './components/helper-components/confirmation-dialog/confirmation-dialog.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsListingComponent } from './components/products/products-listing/products-listing.component';
+import { SubscribeComponent } from './components/subscribe/subscribe.component';
+import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider,GoogleLoginProvider } from 'angularx-social-login';
+
+
+const config = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('1008661869510444')
+  },
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("27464076111-s4aprm4m0r7sb6gjullkfr48l68cqql6")
+  },
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -52,7 +70,8 @@ import { ProductsListingComponent } from './components/products/products-listing
     TooltipDirective,
     AddressAddComponent,
     ConfirmationDialogComponent,
-    ProductsListingComponent
+    ProductsListingComponent,
+    SubscribeComponent
   ],
   imports: [
     BrowserModule,
@@ -68,10 +87,17 @@ import { ProductsListingComponent } from './components/products/products-listing
     ToastrModule.forRoot(),
     FontAwesomeModule,
     NgxPaginationModule,
-    NgbModule
+    NgbModule,
+    SocialLoginModule
   ],
-  providers: [UserService, NbSidebarService, AuthService,EncrDecrService
+  providers: [UserService, NbSidebarService, AuthLoginService,EncrDecrService
     // ConfirmationDialogService
+    ,[
+      {
+        provide: AuthServiceConfig,
+        useFactory: provideConfig
+      }
+    ],
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialogComponent],

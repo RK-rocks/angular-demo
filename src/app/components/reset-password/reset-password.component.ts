@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
-import { AuthService } from "../../_services/auth.service";
+import { AuthLoginService } from "../../_services/auth.service";
 import { PasswordStrengthValidator } from '../../helpers/password-strength.validator';
 import { ToastrService } from 'ngx-toastr';
 @Component({
@@ -18,7 +18,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     protected router: Router,
     private formBuilder: FormBuilder,
-    private AuthService: AuthService,
+    private AuthLoginService: AuthLoginService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService
   ) { }
@@ -59,7 +59,7 @@ export class ResetPasswordComponent implements OnInit {
       token:this.token
     }
     try {
-      let res = await this.AuthService.postRequest(url,reqObj)
+      let res = await this.AuthLoginService.postRequest(url,reqObj)
       console.log(res)
       if(res.status == 1){
         this.router.navigate(["/"]);

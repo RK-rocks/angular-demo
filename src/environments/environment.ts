@@ -14,4 +14,6 @@ export const environment = {
   // },
   production: false,
   apiUrl: "http://localhost:4065",
+  pfdUrl:'http://localhost:4065/pdf/terms-and-conditions-template.pdf',
+  userUrl:'http://localhost:4065/users/'
 };

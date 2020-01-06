@@ -10,6 +10,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { UserProfileComponent } from './components/user-profile/user-profile.component'
 import { AuthGuard, TokenGuard } from './_guards';
 import { userProfileDetailsResolver } from './components/user-profile/user-profile.resolve';
+import { productDetailsResolver } from './components/products/products-listing/product-listing.resolve';
 import { ordersDetailsResolver } from './components/orders/orders-list/orders.resolve';
 import { addressDetailsResolver } from './components/address/address-listing/address-listing.resolve';
 import { addressEditDataResolver } from './components/address/address-add/address-edit.resolve';
@@ -17,6 +18,7 @@ import { AddressListingComponent } from './components/address/address-listing/ad
 import { AddressAddComponent } from './components/address/address-add/address-add.component'
 import { OrdersComponent } from './components/orders/orders-list/orders.component'
 import {ProductsListingComponent} from './components/products/products-listing/products-listing.component'
+import {SubscribeComponent} from './components/subscribe/subscribe.component'
 
 const routes: Routes = [
   {
@@ -53,6 +55,9 @@ const routes: Routes = [
       },
       {
         path: "",
+        resolve: {
+          event: productDetailsResolver,
+        },
         component: ProductsListingComponent
       },
       {
@@ -80,6 +85,10 @@ const routes: Routes = [
         resolve:{
           event:addressEditDataResolver
         }
+      },
+      {
+        path: "subscribe",
+        component: SubscribeComponent,
       },
       {
         path: "order-list",

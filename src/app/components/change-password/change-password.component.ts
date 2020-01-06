@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute,RouterStateSnapshot } from "@angular/router";
-import { AuthService } from "../../_services/auth.service";
+import { AuthLoginService } from "../../_services/auth.service";
 import { PasswordStrengthValidator } from '../../helpers/password-strength.validator';
 import { ToastrService } from 'ngx-toastr';
 @Component({
@@ -17,7 +17,7 @@ export class ChangePasswordComponent implements OnInit {
   constructor(
     protected router: Router,
     private formBuilder: FormBuilder,
-    private AuthService: AuthService,
+    private AuthLoginService: AuthLoginService,
     private toastr: ToastrService
   ) {
    }
@@ -59,7 +59,7 @@ export class ChangePasswordComponent implements OnInit {
       user_id:user_id
     }
     try {
-      let res = await this.AuthService.postRequest(url,reqObj)
+      let res = await this.AuthLoginService.postRequest(url,reqObj)
       if(res.status == 1){
         this.router.navigate(['/']);
         this.toastr.success(res.message)

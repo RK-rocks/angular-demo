@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { AuthService } from "../_services/auth.service";
+import { AuthLoginService } from "../_services/auth.service";
 import { ToastrService } from 'ngx-toastr';
 @Injectable({ providedIn: 'root' })
 export class TokenGuard implements CanActivate {
     constructor(
         private router: Router,
-        private authenticationService: AuthService,
+        private authenticationService: AuthLoginService,
         private toastr: ToastrService
     ) { }
 
@@ -16,7 +16,7 @@ export class TokenGuard implements CanActivate {
         console.log(route.params.token)
         if (route.params) {
             let a = { "token": route.params.token }
-            const url='checkfptoken'
+            const url='user/checkfptoken'
             const res = await this.authenticationService.postRequest(url,a);
             if(res.status == 1){
                 return true;

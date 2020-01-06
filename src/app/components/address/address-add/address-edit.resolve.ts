@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Resolve, ActivatedRouteSnapshot, Router,ActivatedRoute } from '@angular/router';
-import { AuthService } from "../../../_services/auth.service";
+import { AuthLoginService } from "../../../_services/auth.service";
 import {EncrDecrService} from '../../../_services/encr-decr.service';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class addressEditDataResolver implements Resolve<any> {
   editMode:any
   decrypted:any
     constructor(
-        private AuthService: AuthService,
+        private AuthLoginService: AuthLoginService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private EncrDecr: EncrDecrService   
@@ -28,7 +28,7 @@ export class addressEditDataResolver implements Resolve<any> {
 
             const  url = 'address/getaddressdetailsbyid';
             const obj = {"address_id":this.decrypted}
-            return await this.AuthService.postRequest(url,obj);
+            return await this.AuthLoginService.postRequest(url,obj);
         } catch (err) {
             console.error('err', err);
         }

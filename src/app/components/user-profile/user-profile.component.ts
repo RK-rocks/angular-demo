@@ -4,9 +4,10 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { PasswordStrengthValidator } from '../../helpers/password-strength.validator';
 import { MobileValidator } from '../../helpers/mobile.validator';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from "../../_services/auth.service";
+import { AuthLoginService } from "../../_services/auth.service";
 import { User } from '../../models/user';
 import { HttpClient } from '@angular/common/http';
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: 'app-user-profile',
@@ -25,7 +26,7 @@ export class UserProfileComponent implements OnInit {
   constructor(
     protected router: Router,
     private formBuilder: FormBuilder,
-    private AuthService: AuthService,
+    private AuthLoginService: AuthLoginService,
     private toastr: ToastrService,
     private activatedRoute :ActivatedRoute,
     private http: HttpClient
@@ -37,7 +38,10 @@ export class UserProfileComponent implements OnInit {
       lastName: ['', [Validators.required,Validators.maxLength(12)]],
       image:[]
   });
-
+  if(this.userData.profile_image){
+    console.log(this.userData)
+    this.url = `${environment.userUrl}`+'/'+'/'+this.userData.profile_image
+  }
 
 }
 userData = this.activatedRoute.snapshot.data['event'].data.userData; 

@@ -11,8 +11,39 @@
 	transition:top 0.3s;
 }
 
+agm-map {
+    height: 300px;
+}
+
+.box-left {
+    flex: 1;
+}
+
+.menu-footer {
+    display: flex;
+    flex-wrap: wrap;
+    clear: both;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.list-style{
+	color: #ffffff !important;
+	list-style:none;
+	padding-left: 20px;
+}
+
+.menu-footer a {
+	list-style: none;
+    transition: all 0.3s ease-in-out;
+}
+
 .height-50{
     height: 50px;
+}
+
+.cursor-pointer{
+	cursor: pointer;
 }
 
 .header-fixed .header-limiter {
@@ -27,6 +58,10 @@
 .header-fixed-placeholder{
 	height: 80px;
 	display: none;
+}
+
+.list-style-subscribe{
+	color: red !important;
 }
 
 /* Logo */

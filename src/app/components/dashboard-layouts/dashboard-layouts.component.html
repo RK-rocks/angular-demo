@@ -1,23 +1,31 @@
 <nb-layout>
     <nb-layout-header fixed>
-        
+
         <header class="header-fixed">
             <div class="header-limiter">
                 <h1 style="padding:5px 0px;margin-top:10px" class="mt-10"><a href="#">
-                    <img class="height-50" src="../../../assets/images/download.png"
-                            alt="logo" /></a></h1>
+                        <img class="height-50" src="../../../assets/images/download.png" alt="logo" /></a></h1>
                 <nav>
                     <a [routerLink]="['/']" class="dropbtn">Home</a>
-                    <div  class="dropdown">
-                        <a href="#" class="selected dropbtn"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My account</a>
+                    <div class="dropdown">
+                        <a href="#" class="selected dropbtn"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My
+                            account</a>
                         <div class="dropdown-content">
                             <div class="arrow-up"></div>
                             <div class="row">
                                 <div class="column">
-                                    <a [routerLink]="['update-profile']" class="color-dropdown"> <i class="fa fa-user-circle fa-define-class" aria-hidden="true"></i> User Profile</a>
-                                    <a [routerLink]="['addres-list']" class="color-dropdown"> <i class="fa fa-address-card fa-define-class" aria-hidden="true"></i> Address</a>
-                                    <a href="#" class="color-dropdown"><i class="fa fa-address-card fa-define-class" aria-hidden="true"></i> Address modle</a>
-                                    <a [routerLink]="['order-list']" class="color-dropdown"><i class="fa fa-shopping-cart fa-define-class" aria-hidden="true"></i> Order</a>
+                                    <a [routerLink]="['update-profile']" class="color-dropdown"> <i
+                                            class="fa fa-user-circle fa-define-class" aria-hidden="true"></i> User
+                                        Profile</a>
+                                    <a [routerLink]="['addres-list']" class="color-dropdown"> <i
+                                            class="fa fa-address-card fa-define-class" aria-hidden="true"></i>
+                                        Address</a>
+                                    <a [routerLink]="['order-list']" class="color-dropdown"><i
+                                            class="fa fa-shopping-cart fa-define-class" aria-hidden="true"></i>
+                                        Order</a>
+                                    <a (click)='logout()' class="color-dropdown cursor-pointer"><i
+                                            class="fa fa-power-off fa-define-class" aria-hidden="true"></i>
+                                        Logout</a>
                                 </div>
                             </div>
                         </div>
@@ -35,8 +43,28 @@
             <router-outlet></router-outlet>
         </div>
     </nb-layout-column>
-
     <nb-layout-footer fixed>
+        <div class="box-left">
+            <ul class="menu-footer">
+                <li class="list-style"><a rel="nofollow" href="/contact-us/"><i class="fa fa-info-circle"
+                            aria-hidden="true"></i> About Company</a></li>
+                <li class="list-style"><a rel="nofollow" href="/faqs/"><i class="fa fa-info-circle"
+                            aria-hidden="true"></i> Information</a></li>
+                <li class="list-style"><a rel="nofollow" href="/cookies-policy/"><i class="fa fa-newspaper-o"
+                            aria-hidden="true"></i> Newsletter</a></li>
+                <li class="list-style"><a rel="nofollow" href="{{pdfUrl}}" target="_blank"><i class="fa fa-newspaper-o"
+                            aria-hidden="true"></i> Terms and condition</a></li>
+                <li class="list-style cursor-pointer">
+                    <i class="fa fa-newspaper-o list-style-subscribe" aria-hidden="true"></i>
+                    <span *ngIf="is_subscribed;else other_content1" (click)="openConfirmationDialog(false)"
+                        class="list-style-subscribe"> Un Subscribe
+                    </span>
+                </li>
+                <ng-template #other_content1>
+                    <span class="list-style-subscribe" (click)="openConfirmationDialog(true)"> Subscribe</span>
+                </ng-template>
+            </ul>
+        </div>
     </nb-layout-footer>
 
 </nb-layout>

@@ -1,4 +1,9 @@
 
+<div class="row ma-0">
+  <div class="mt-10">
+    <span class="title"></span>
+  </div>
+</div>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div id="vcontainer">
           <div id="hcontainer">
@@ -66,6 +71,13 @@
                           </span>
                       </div>
                   </div>
+                  <div class="row ma-0 mt-10">
+                    <div class="mlr-auto">
+                      <img (click)="signInWithGoogle()" ng-disabled="isDisabled" tooltip="Login with google" placement="bottom" delay="100" src="../../../assets/images/download (1).png" class="height-25px cursor-pointer" alt="">
+                      <img (click)="signInWithFB()" ng-disabled="isDisabled" tooltip="Login with facebook" placement="bottom" delay="100" aria-hidden="true" src="../../../assets/images/fb-logo.png" class="height-25px cursor-pointer" alt="">
+                      <img src="../../../assets/images/twitter-logo.png" class="height-25px cursor-pointer" alt="">
+                    </div>
+                </div>
             </div>
           </div>
         </div>

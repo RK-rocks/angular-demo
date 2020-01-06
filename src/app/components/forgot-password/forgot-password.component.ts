@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
-import { AuthService } from "../../_services/auth.service";
+import { AuthLoginService } from "../../_services/auth.service";
 import { MobileValidator } from '../../helpers/mobile.validator';
 import { ToastrService } from 'ngx-toastr';
 
@@ -18,7 +18,7 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     protected router: Router,
     private formBuilder: FormBuilder,
-    private AuthService: AuthService,
+    private AuthLoginService: AuthLoginService,
     private toastr: ToastrService
   ) { }
 
@@ -47,12 +47,12 @@ export class ForgotPasswordComponent implements OnInit {
       return;
     }
     this.submitted = true;
-    let url = 'forgotpassword'
+    let url = 'user/forgotpassword'
     let reqObj = {
       email:this.forgotPasswordForm.value.email
     }
     try {
-      let res = await this.AuthService.postRequest(url,reqObj)
+      let res = await this.AuthLoginService.postRequest(url,reqObj)
       console.log(res)
       if(res.status == 1){
         this.router.navigate(["/"]);

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute,RouterStateSnapshot } from "@angular/router";
-import { AuthService } from "../../../_services/auth.service";
+import { AuthLoginService } from "../../../_services/auth.service";
 import {EncrDecrService} from '../../../_services/encr-decr.service';
 
 
@@ -24,7 +24,7 @@ export class AddressAddComponent implements OnInit {
     protected router: Router,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private AuthService: AuthService,
+    private AuthLoginService: AuthLoginService,
     private toastr: ToastrService,
     private EncrDecr: EncrDecrService
   ) { }
@@ -77,7 +77,7 @@ export class AddressAddComponent implements OnInit {
       this.reqObj.address_id = this.decryptId
     }
     try {
-      let res = await this.AuthService.postRequest(url,this.reqObj)
+      let res = await this.AuthLoginService.postRequest(url,this.reqObj)
       if(res.status == 1){
         if(!this.editMode){
           this.router.navigate(['/dashboard/addres-list']);
