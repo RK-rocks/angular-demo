@@ -17,6 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 export class DashboardLayoutsComponent implements OnInit {
   faCoffee = faCoffee;
   pdfUrl = `${environment.pfdUrl}`
+  locateUsUrl = 'locate-us'
   loading = false
   submitted = false
   updateProfile = 'dashboard/update-profile';

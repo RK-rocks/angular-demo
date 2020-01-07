@@ -35,6 +35,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsListingComponent } from './components/products/products-listing/products-listing.component';
 import { SubscribeComponent } from './components/subscribe/subscribe.component';
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider,GoogleLoginProvider } from 'angularx-social-login';
+import { LocateUsComponent } from './components/locate-us/locate-us.component';
 
 
 const config = new AuthServiceConfig([
@@ -71,7 +72,8 @@ export function provideConfig() {
     AddressAddComponent,
     ConfirmationDialogComponent,
     ProductsListingComponent,
-    SubscribeComponent
+    SubscribeComponent,
+    LocateUsComponent
   ],
   imports: [
     BrowserModule,

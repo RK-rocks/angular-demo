@@ -11,6 +11,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { AuthGuard, TokenGuard } from './_guards';
 import { userProfileDetailsResolver } from './components/user-profile/user-profile.resolve';
 import { productDetailsResolver } from './components/products/products-listing/product-listing.resolve';
+import { colorDetailsResolver } from './components/products/products-listing/color-listing.resolve';
+import { categoryDetailsResolver } from './components/products/products-listing/category-listing.resolve';
 import { ordersDetailsResolver } from './components/orders/orders-list/orders.resolve';
 import { addressDetailsResolver } from './components/address/address-listing/address-listing.resolve';
 import { addressEditDataResolver } from './components/address/address-add/address-edit.resolve';
@@ -19,6 +21,7 @@ import { AddressAddComponent } from './components/address/address-add/address-ad
 import { OrdersComponent } from './components/orders/orders-list/orders.component'
 import {ProductsListingComponent} from './components/products/products-listing/products-listing.component'
 import {SubscribeComponent} from './components/subscribe/subscribe.component'
+import {LocateUsComponent} from './components/locate-us/locate-us.component'
 
 const routes: Routes = [
   {
@@ -56,7 +59,7 @@ const routes: Routes = [
       {
         path: "",
         resolve: {
-          event: productDetailsResolver,
+          event: productDetailsResolver,colorDetailsResolver,categoryDetailsResolver
         },
         component: ProductsListingComponent
       },
@@ -89,6 +92,10 @@ const routes: Routes = [
       {
         path: "subscribe",
         component: SubscribeComponent,
+      },
+      {
+        path: "locate-us",
+        component: LocateUsComponent,
       },
       {
         path: "order-list",

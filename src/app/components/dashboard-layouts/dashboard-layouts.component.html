@@ -54,6 +54,8 @@
                             aria-hidden="true"></i> Newsletter</a></li>
                 <li class="list-style"><a rel="nofollow" href="{{pdfUrl}}" target="_blank"><i class="fa fa-newspaper-o"
                             aria-hidden="true"></i> Terms and condition</a></li>
+                <li class="list-style"><a rel="nofollow" [routerLink]="[locateUsUrl]"><i class="fa fa-map-marker"
+                                aria-hidden="true"></i> Locate us</a></li>
                 <li class="list-style cursor-pointer">
                     <i class="fa fa-newspaper-o list-style-subscribe" aria-hidden="true"></i>
                     <span *ngIf="is_subscribed;else other_content1" (click)="openConfirmationDialog(false)"

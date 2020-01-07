@@ -1,57 +1,86 @@
 <div class="row my-4">
-
-    <!--Grid column-->
-    <div *ngFor="let product of letProductData" class="col-lg-3 col-md-12 hoverable">
-        <div class="card p-10">
-
-            <!-- Card content -->
-            <div class="card-body d-flex flex-row">
-            </div>
-          
-            <!-- Card image -->
-            <div class="view overlay pa-10">
-              <img class="card-img-top rounded-0" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg" alt="Card image cap">
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-          
-            <!-- Card content -->
-            <div class="card-body">
-                <span class="color">{{product.name}}</span>
-              <div class="collapse-content">
-                <p class="card-text product-list-card-descr">
-                  {{product.features.length > 100 ? product.features.slice(0, 100) : product.features}}
-                </p>
-                <span class="color-black">
-                  MRP:
-                </span>
-                <span class="product-class-old-price">
-                  $40
-                </span>
-                <p>
-                  <span class="color-black">
-                    Price:
-                  </span>
-                  <span class="product-card-price">
-                    ${{product.price}}
-                  </span>
-                </p>
-                <p *ngFor="let color of product.tbl_product_colors">
-                  <span class="color-black">
-                   Color:{{color.color}} 
-                  </span>
-                </p>
-                <!-- Text -->
-                <!-- Button -->
-          
-              </div>
-          
-            </div>
-          
+  <div class="col-lg-2 col-md-3">
+    <ul class="sidebar">
+      
+      <li>All products</li>
+      <li class="dropbtn">
+        <div class="dropdown">
+          <span class="dropbtn">Categories</span>
+          <div class="dropdown-content">
+            <a *ngFor="let category of letCategoryData" href="#">{{category.name}}</a>
+          </div>
         </div>
+      </li>
+      <li>
+        <div class="dropdown">
+          <span class="dropbtn">Color</span>
+          <div class="dropdown-content">
+            <a *ngFor="let color of letColorData" href="#">{{color.color}}</a>
+          </div>
+        </div>
+      </li>
+      </ul>
+  </div>
+  <div class="col-lg-10 col-md-9">
+    <!--Grid column-->
+    <div class="row ma--0">
+      <div *ngFor="let product of letProductData" class="col-lg-3 col-md-12 hoverable">
+          <div class="card p-10 mt-5">
+  
+              <!-- Card content -->
+              <div class="card-body d-flex flex-row">
+              </div>
+            
+              <!-- Card image -->
+              <div class="view overlay pa-10">
+                <img class="card-img-top rounded-0" src={{imageUrl}}{{product.image}} alt="Card image cap">
+                <a href="#!">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+            
+              <!-- Card content -->
+              <div class="card-body">
+                  <span class="color">{{product.name}}</span>
+                <div class="collapse-content">
+                  <!-- <p class="card-text product-list-card-descr">
+                    {{product.features.length > 100 ? product.features.slice(0, 100) : product.features}}
+                    {{product.features.length > 100 ? '...' : ''}}
+                  </p> -->
+                  <span class="color-black">
+                    MRP:
+                  </span>
+                  <span class="product-class-old-price">
+                    $40
+                  </span>
+                  <p>
+                    <span class="color-black">
+                      Price:
+                    </span>
+                    <span class="product-card-price">
+                      ${{product.price}}
+                    </span>
+                  </p>
+                  <!-- <p *ngFor="let color of product.tbl_product_colors">
+                    <span class="color-black">
+                     Color:{{color.color}} 
+                    </span>
+                  </p> -->
+                  <p>
+                    <button class="btn btn-primary submit-btn"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                  </p>
+                  <!-- Text -->
+                  <!-- Button -->
+            
+                </div>
+            
+              </div>
+            
+          </div>
+      </div>
     </div>
     <!--Grid column-->
+  </div>
 
 
 </div>
