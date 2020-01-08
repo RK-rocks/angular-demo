@@ -45,6 +45,20 @@ $class: height-;
   }
 }
 
+$class: font-size-;
+// loops through 100 times
+@for $i from 1 through 30 {
+
+  // for each $col_#{i} 
+  .#{$class}#{$i} {
+
+    // set the background-color to cornflowerblue and 
+    // each time lighten the color slightly
+    // background-color: darken(cornflowerblue, 0% + ($i / 2));
+    font-size: $i+px;
+  }
+}
+
 .curser-pointer{
   cursor: pointer;
 }

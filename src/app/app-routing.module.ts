@@ -63,6 +63,13 @@ const routes: Routes = [
         },
         component: ProductsListingComponent
       },
+      // {
+      //   path: "?color_id=:color_id",
+      //   resolve: {
+      //     event: productDetailsResolver,colorDetailsResolver,categoryDetailsResolver
+      //   },
+      //   component: ProductsListingComponent
+      // },
       {
         path: "update-profile",
         resolve: {
