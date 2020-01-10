@@ -22,6 +22,8 @@ import { OrdersComponent } from './components/orders/orders-list/orders.componen
 import {ProductsListingComponent} from './components/products/products-listing/products-listing.component'
 import {SubscribeComponent} from './components/subscribe/subscribe.component'
 import {LocateUsComponent} from './components/locate-us/locate-us.component'
+import {allProductDetailsResolver} from './components/products/product-details/product-details.resolve'
+import {ProductDetailsComponent} from './components/products/product-details/product-details.component'
 
 const routes: Routes = [
   {
@@ -63,6 +65,14 @@ const routes: Routes = [
         },
         component: ProductsListingComponent
       },
+      {
+        path: "product-details/:id",
+        resolve: {
+          event: allProductDetailsResolver
+        },
+        component: ProductDetailsComponent
+      },
+      //from here
       // {
       //   path: "?color_id=:color_id",
       //   resolve: {

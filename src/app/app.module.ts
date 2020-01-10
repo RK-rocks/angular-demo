@@ -36,7 +36,7 @@ import { ProductsListingComponent } from './components/products/products-listing
 import { SubscribeComponent } from './components/subscribe/subscribe.component';
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider,GoogleLoginProvider } from 'angularx-social-login';
 import { LocateUsComponent } from './components/locate-us/locate-us.component';
-
+import {ProductDetailsComponent} from './components/products/product-details/product-details.component'
 
 const config = new AuthServiceConfig([
   {
@@ -73,7 +73,8 @@ export function provideConfig() {
     ConfirmationDialogComponent,
     ProductsListingComponent,
     SubscribeComponent,
-    LocateUsComponent
+    LocateUsComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
