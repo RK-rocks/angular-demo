@@ -8,16 +8,41 @@
 .product {
   img {
     max-width: 100%;
-    height: auto;
+    // height: auto;
   }
+}
+.swiper-slide {
+  background: lightblue;
+}
+
+.swiper-button-next{
+  color: #ffffff;
+}
+
+:root {
+  --swiper-theme-color: #ffcc2f !important;
+}
+
+.swiper-pagination-bullet-active{
+  color: #ffffff;
+}
+
+.swiper-button-prev{
+  color: #ffffff;
+
+}
+
+.images-height{
+  height: 400px !important;
+  width: 800px !important;
 }
 
 .product--title {
   color: #b556bb;
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 2.5em;
   font-family: serif;
-  padding: 20px 0;
+  // padding: 20px 0;
   text-align: center;
   h2 {
     display: inline-block;
@@ -26,7 +51,7 @@
 }
 .product--image, .product--details {
   float: left;
-  width: 45%;
+  width: 90%;
 }
 .product--image {
   padding-right: 3%;
@@ -70,7 +95,7 @@
     border: 1px solid #999;
     border-radius: 4px 4px;
     text-align: center;
-    padding: 1px 2px;
+    padding: 1px 10px;
     text-transform: uppercase;
     cursor: pointer;
     &.active {
@@ -94,6 +119,11 @@
       margin: 0;
     }
   }
+}
+
+.back-link-product-details{
+  color: #ffcc2f;
+  font-size: 25px;
 }
 
 .add-to-cart {
@@ -130,6 +160,43 @@
     }
     &:hover, &:focus {
       background: #f30f0f;
+      color: #fff;
+      //box-shadow: 0px 0px 4px 2px indianred;
+      text-shadow: 2px 2px 3px #666;
+      transition: all .4s;
+      &:after {
+        right: 2%;
+      }
+    }
+  }
+}
+
+.btn{
+  background: none;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  &.btn--checkout {
+    color: #ffffff;
+    background-color: #59ff2f;
+    border: 1px solid #59ff2f;
+    border-radius: 4px;
+    padding: 3px 30px 3px 5px;
+    box-shadow: 0px 0px 3px 0px #59ff2f;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    font-size: 1.5em;
+    &:after {
+      content: "⇨";
+      padding-left: 2px;
+      position: absolute;
+      right: 150%;
+      transition: all .4s;
+      color: #fff;
+    }
+    &:hover, &:focus {
+      background: #59ff2f;
       color: #fff;
       //box-shadow: 0px 0px 4px 2px indianred;
       text-shadow: 2px 2px 3px #666;

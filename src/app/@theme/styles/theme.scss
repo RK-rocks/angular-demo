@@ -27,7 +27,7 @@ $class: mt-;
     // set the background-color to cornflowerblue and 
     // each time lighten the color slightly
     // background-color: darken(cornflowerblue, 0% + ($i / 2));
-    margin-top: $i+px;
+    margin-top: $i+px !important;
   }
 }
 

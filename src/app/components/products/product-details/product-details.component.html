@@ -1,23 +1,37 @@
-<div class="row ma--0">
+<div class="row ma-0">
+    <div class="col-12 text-left pa-0">
+        <a [routerLink]="['/']"><span class="title curser-pointer back-link-product-details"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</span></a>
+    </div>
+</div>
+<div class="row ma--0 mt-20">
     <div class="col-lg-6">
         <div class="product">
             <div class="product--image">
-                <div class="icon-images">
-                  <img src="http://stalkbuylove.com/media/catalog/product/cache/1/image/393x502/9df78eab33525d08d6e5fb8d27136e95/i/n/in1335avv-167-front.jpg"/>
-                  <img src="http://stalkbuylove.com/media/catalog/product/cache/1/image/393x502/9df78eab33525d08d6e5fb8d27136e95/i/n/in1335avv-167-detail.jpg"/>
-                  <img src="http://stalkbuylove.com/media/catalog/product/cache/1/image/393x502/9df78eab33525d08d6e5fb8d27136e95/i/n/in1335avv-167-back.jpg"/>
-                </div>
-                <img src="http://stalkbuylove.com/media/catalog/product/cache/1/image/393x502/9df78eab33525d08d6e5fb8d27136e95/i/n/in1335avv-167-back.jpg" class="display-img">
-              </div>
+                <swiper [config]="config" style="">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="images-height" [src]="letProductData.image" alt="">
+                        </div>
+                        <div *ngFor='let image of letProductData.tbl_product_images' class="swiper-slide">
+                            <img class="images-height" [src]="image.image" alt="">
+                        </div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </swiper>
+            </div>
         </div>
     </div>
     <div class="col-lg-6">
         <div class="row ma--0 product">
             <div class="product--title">
-                <h2>{{letProductData.name}}</h2>
+                <span>{{letProductData.name}}</span>
               </div>
         </div>
-        <div class="row ma--0">
+        <div class="row ma--0 mt-20">
             <div class="product--details">
                 <div class="product--price">
                     <span class="product--price_price">${{letProductData.price}}</span>
@@ -34,17 +48,12 @@
         <div class="row ma--0">
             <div class="product--details">
                 <div class="product--size">
-                    <div class="row ma--0">
-                        <div class="col-lg-4">
-                            <span>Black</span>
-                        </div>
-                        <div class="col-lg-4">
-                            <span class="active">Red</span>
-                        </div>
-                        <div class="col-lg-4">
-                            <span>Green</span>
-                        </div>
-                    </div>
+                    <span *ngFor='let colorTable of letProductData.tbl_product_colors'>
+                        {{colorTable.tbl_color.color}}
+                    </span>
+                    <!-- <span class="active">Black</span>
+                    <span class="">Red</span>
+                    <span class="">Green</span> -->
                 </div>
             </div>
         </div>
@@ -63,7 +72,14 @@
         <div class="row ma--0">
             <div class="product--details">
                 <div class="add-to-cart">
-                    <button class="btn btn--cart">Shop it!</button>
+                    <button class="btn btn--cart">Add to cart!</button>
+                </div>
+            </div>
+        </div>
+        <div class="row ma--0">
+            <div class="product--details">
+                <div class="add-to-cart">
+                    <button class="btn btn--checkout">Check out!</button>
                 </div>
             </div>
         </div>
