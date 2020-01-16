@@ -36,6 +36,7 @@
     "jw-angular-pagination": "^1.1.0",
     "ngx-bootstrap": "^5.2.0",
     "ngx-pagination": "^5.0.0",
+    "ngx-swiper-wrapper": "^8.0.2",
     "ngx-toastr": "^11.2.1",
     "ngx-useful-swiper": "^9.0.0",
     "rxjs": "^6.4.0",
