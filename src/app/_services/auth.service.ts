@@ -59,6 +59,7 @@ export class AuthLoginService {
       headers: headers
     };
   let promise;
+  
     promise= new Promise((resolve, reject) => {
       this.http
         .post<any>(

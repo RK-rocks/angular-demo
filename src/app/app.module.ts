@@ -38,6 +38,7 @@ import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider,GoogleLogin
 import { LocateUsComponent } from './components/locate-us/locate-us.component';
 import {ProductDetailsComponent} from './components/products/product-details/product-details.component'
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { RatingModule } from 'ng-starrating';
 
 const config = new AuthServiceConfig([
   {
@@ -93,7 +94,8 @@ export function provideConfig() {
     NgxPaginationModule,
     NgbModule,
     SocialLoginModule,
-    NgxUsefulSwiperModule
+    NgxUsefulSwiperModule,
+    RatingModule
   ],
   providers: [UserService, NbSidebarService, AuthLoginService,EncrDecrService
     // ConfirmationDialogService

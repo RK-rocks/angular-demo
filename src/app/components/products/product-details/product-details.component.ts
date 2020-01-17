@@ -3,10 +3,13 @@ import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
 import { AuthLoginService } from "../../../_services/auth.service";
 import {EncrDecrService} from '../../../_services/encr-decr.service';
+import { environment } from "../../../../environments/environment";
+
 import { map,filter } from 'rxjs/operators';
 import { SwiperOptions } from 'swiper';
 import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
   SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
+import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-product-details',
@@ -26,6 +29,7 @@ export class ProductDetailsComponent implements OnInit {
   previousUrl
   isActive
   isDisabled = false;
+  rattingProductUrl = `product/productsratting`
   constructor(
 
     private activatedRoute: ActivatedRoute,
@@ -71,9 +75,9 @@ export class ProductDetailsComponent implements OnInit {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-    zoom: {
-      maxRatio: 7,
-    },
+    // zoom: {
+    //   maxRatio: 7,
+    // },
     spaceBetween: 30,
     // autoplay: {
     //   delay: 2000,
@@ -100,7 +104,36 @@ export class ProductDetailsComponent implements OnInit {
     this.render.setElementClass(event.target,"active",true); 
   }
 
-  addClass(obj){
-    console.log(obj)
+  async onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent},productData) {
+    console.log('productData',productData)
+    try {
+      console.log("filterback function called")
+      let sessionData:any = JSON.parse(localStorage.getItem('currentUser'))
+      let user_id = sessionData.userId
+      let product_id = productData.id
+      
+      let reqObj = {
+        user_id : user_id,
+        product_id : product_id,
+        ratings : $event.newValue
+      }
+      let res = await this.AuthLoginService.postRequest(this.rattingProductUrl,reqObj)
+      this.letProductData = this.letProductData
+      console.log(res)
+      console.log(this.letProductData)
+      if(res.status == 1){
+        this.loading = false
+        this.letProductData = res.data.productData
+        this.toastr.success(res.message)
+        // this.router.navigate(['/']);
+      }else{
+        this.loading = false
+        this.toastr.warning(res.message)
+      }
+    } catch (error) {
+      this.loading = false
+      this.toastr.warning(error.message)
+    }
   }
+  
 }

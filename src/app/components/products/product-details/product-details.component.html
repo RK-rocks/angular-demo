@@ -10,9 +10,9 @@
                 <swiper #swiperWrapper [config]="config" (indexChange)="onIndexChange($event)" style="">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img class="images-height" [src]="letProductData.image" alt="">
+                            <img class="images-height" [src]="letProductData?.image" alt="">
                         </div>
-                        <div *ngFor='let image of letProductData.tbl_product_images' class="swiper-slide" id=slider-image-{{image.id}}>
+                        <div *ngFor='let image of letProductData?.tbl_product_images' class="swiper-slide" id=slider-image-{{image.id}}>
                             <img class="images-height" [src]="image.image" alt="">
                         </div>
                     </div>
@@ -28,28 +28,33 @@
     <div class="col-lg-6">
         <div class="row ma--0 product">
             <div class="product--title">
-                <span>{{letProductData.name}}</span>
+                <span>{{letProductData?.name}}</span>
               </div>
+        </div>
+        <div class="row ma--0 mt-10">
+            <star-rating value="{{letProductData?.ratings}}" totalstars="5" checkedcolor="gold" 
+                uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event,letProductData)">
+            </star-rating>
         </div>
         <div class="row ma--0 mt-20">
             <div class="product--details">
                 <div class="product--price">
-                    <span class="product--price_price">${{letProductData.price}}</span>
+                    <span class="product--price_price">${{letProductData?.price}}</span>
                     <span class="product--price_offer">new arrivel !</span>
                 </div>
             </div>
         </div>
         <div class="row ma--0">
             <div class="product--details width-inherit">
-                <div class="product--desc"><p>{{letProductData.features}}</p>
+                <div class="product--desc"><p>{{letProductData?.features}}</p>
                 </div>
             </div>
         </div>
         <div class="row ma--0">
             <div class="product--details">
                 <div #colorWrapper class="product--size">
-                    <span [ngClass]='' *ngFor='let colorTable of letProductData.tbl_product_colors' (click)='changeIndexSlider(colorTable)'>
-                        {{colorTable.tbl_color.color}}
+                    <span [ngClass]='' *ngFor='let colorTable of letProductData?.tbl_product_colors' (click)='changeIndexSlider(colorTable)'>
+                        {{colorTable?.tbl_color.color}}
                     </span>
                     <!-- <span class="active">Black</span>
                     <span class="">Red</span>
