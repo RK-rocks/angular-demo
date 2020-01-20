@@ -30,13 +30,19 @@ export class DashboardLayoutsComponent implements OnInit {
     NbSidebarService: NbSidebarService) { }
   sessionData: any = JSON.parse(localStorage.getItem('currentUser'))
   is_subscribed = this.sessionData.is_subscribed
+  cart_item_numbers = this.sessionData.cart_item_numbers
   ngOnInit() {
   }
 
   async logout(){
     let res:any = await localStorage.clear()
     this.AuthLoginService.currentUserSubject.next({
-      id: null, password: null, first_name: null, last_name: null
+      id: null,
+      password: null, 
+      first_name: null, 
+      last_name: null,
+      is_subscribed:null,
+      cart_item_numbers:null
     });
     if(res){
       this.router.navigate(['/']);

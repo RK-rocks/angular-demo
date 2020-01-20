@@ -29,6 +29,8 @@ export class ProductDetailsComponent implements OnInit {
   previousUrl
   isActive
   isDisabled = false;
+  product_image_id_global
+  quantity_product_global
   rattingProductUrl = `product/productsratting`
   constructor(
 
@@ -86,6 +88,7 @@ export class ProductDetailsComponent implements OnInit {
 
   //this function is for change slider index
   changeIndexSlider(obj){
+    this.product_image_id_global = obj.product_image_id
     let indexOfImage
     console.log(obj)
     let res = this.letProductData['tbl_product_images'].map((index,i)=>{
@@ -134,6 +137,52 @@ export class ProductDetailsComponent implements OnInit {
       this.loading = false
       this.toastr.warning(error.message)
     }
+  }
+
+  async addToCart(obj){
+    this.product_image_id_global
+    if(this.quantity_product_global == undefined){
+      this.quantity_product_global = 1
+    }
+    try {
+      this.submitted = true;
+      let url = 'product/addtocartproduct'
+      let sessionData: any = JSON.parse(localStorage.getItem('currentUser'))
+      let user_id = sessionData.userId
+      let token = sessionData.token
+      let is_subscribed = sessionData.is_subscribed
+      let cart_item_numbers = sessionData.cart_item_numbers
+      console.log('obj',obj)
+      let reqObj = {
+        user_id: user_id,
+        product_id: obj.id,
+        total_item:this.quantity_product_global,
+        product_color_id:this.product_image_id_global,
+      }
+      let res = await this.AuthLoginService.postRequest(url, reqObj);
+      if (res.status == 1) {
+        const responseData = {
+          userId: user_id,
+          token: token,
+          is_subscribed: is_subscribed,
+          cart_item_numbers:res.data.total_item
+        }
+        console.log(responseData)
+        localStorage.setItem('currentUser', JSON.stringify(responseData));
+
+        this.toastr.success(res.message)
+      } else {
+        this.loading = false
+        this.toastr.warning(res.message)
+      }
+    } catch (error) {
+      this.loading = false
+      this.toastr.warning(error.message)
+    }
+  }
+
+  async quantityChangeFun(events){
+    this.quantity_product_global = events.target.value
   }
   
 }

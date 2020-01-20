@@ -106,6 +106,39 @@ agm-map {
     color: #ffbe2b;
 }
 
+.fa-shopping-cart-products{
+	margin-top: 0px;
+	position: absolute;
+	font-size: 30px;
+	color: #69ea2e;
+}
+
+.cart-iteam-number{
+	font-size: 18px;
+    /* margin-top: -25px; */
+    color: #b556bb;
+    position: absolute;
+    top: -9px;
+    left: 0px;
+    right: -1px;
+}
+
+.mydiv { 
+	background-color: #ffffff;
+    height: 22px;
+    width: 22px;
+    position: relative;
+    left: 30px;
+    top: -10px;
+}
+
+.round-corner {
+	-webkit-border-radius: 5px 5px 5px 5px; 
+	-moz-border-radius: 5px 5px 5px 5px;
+	-o-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+
 .float-left{
 	float: left;
 }
@@ -195,7 +228,7 @@ body.fixed .header-fixed .header-limiter nav {
     position: fixed;
     width: 170px;
     // right: 522px;
-	right: 317px;
+	right: 260px;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }

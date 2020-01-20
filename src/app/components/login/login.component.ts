@@ -76,11 +76,17 @@ export class LoginComponent implements OnInit {
         const responseData = {
           userId: res.data.userData.user_id,
           token: res.data.userData.token,
-          is_subscribed: res.data.userData.is_subscribed
+          is_subscribed: res.data.userData.is_subscribed,
+          cart_item_numbers:res.data.userData.cart_item_numbers
         }
         localStorage.setItem('currentUser', JSON.stringify(responseData));
         this.authenticationService.currentUserSubject.next({
-          id: 1, password: '122', first_name: 'aaa', last_name: 'ss'
+          id: 1, 
+          password: '122', 
+          first_name: 'aaa', 
+          last_name: 'ss',
+          is_subscribed:res.data.userData.is_subscribed,
+          cart_item_numbers:res.data.userData.cart_item_numbers
         });
         this.isDisabled = true
         this.loading = false
@@ -117,11 +123,17 @@ export class LoginComponent implements OnInit {
         const responseData = {
           userId: res.data.userData.user_id,
           token: res.data.userData.token,
-          is_subscribed: res.data.userData.is_subscribed
+          is_subscribed: res.data.userData.is_subscribed,
+          cart_item_numbers:res.data.userData.cart_item_numbers
         }
         localStorage.setItem('currentUser', JSON.stringify(responseData));
         this.authenticationService.currentUserSubject.next({
-          id: 1, password: '122', first_name: 'aaa', last_name: 'ss'
+          id: 1, 
+          password: '122', 
+          first_name: 'aaa', 
+          last_name: 'ss',
+          is_subscribed:res.data.userData.is_subscribed,
+          cart_item_numbers:res.data.userData.cart_item_numbers
         });
         this.isDisabled = true
         this.loading = false
@@ -168,11 +180,17 @@ export class LoginComponent implements OnInit {
         const responseData = {
           userId: res.data.userData.user_id,
           token: res.data.userData.token,
-          is_subscribed: res.data.userData.is_subscribed
+          is_subscribed: res.data.userData.is_subscribed,
+          cart_item_numbers:res.data.userData.cart_item_numbers
         }
         localStorage.setItem('currentUser', JSON.stringify(responseData));
         this.authenticationService.currentUserSubject.next({
-          id: 1, password: '122', first_name: 'aaa', last_name: 'ss'
+          id: res.data.userData.user_id,
+          password: '122', 
+          first_name: 'aaa', 
+          last_name: 'ss',
+          is_subscribed:'no',
+          cart_item_numbers:res.data.userData.cart_item_numbers
         });
         this.isDisabled = true
         this.toastr.success(res.message)
