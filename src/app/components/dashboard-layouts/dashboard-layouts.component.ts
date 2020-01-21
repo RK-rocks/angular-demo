@@ -7,7 +7,7 @@ import { environment } from "../../../environments/environment";
 import { ConfirmationDialogService } from '../helper-components/confirmation-dialog/confirmation-dialog.service';
 import { AuthLoginService } from "../../_services/auth.service";
 import { ToastrService } from 'ngx-toastr';
-
+import {CartService} from '../dashboard-layouts/cart.service';
 
 @Component({
   selector: 'app-dashboard-layouts',
@@ -27,11 +27,24 @@ export class DashboardLayoutsComponent implements OnInit {
     private AuthLoginService: AuthLoginService,
     private toastr: ToastrService,
     private confirmationDialogService: ConfirmationDialogService,
+    private CartService:CartService,
     NbSidebarService: NbSidebarService) { }
   sessionData: any = JSON.parse(localStorage.getItem('currentUser'))
   is_subscribed = this.sessionData.is_subscribed
   cart_item_numbers = this.sessionData.cart_item_numbers
+  observableCartNumbers
   ngOnInit() {
+    this.observableCartNumbers = this.CartService.getNavChangeEmitter()
+      .subscribe(item => {
+        console.log('item',item);
+        this.valueChangeCart(item)
+      });
+      console.log(this.cart_item_numbers)
+  }
+
+  valueChangeCart(value){
+    console.log('value',value)
+    this.cart_item_numbers = value
   }
 
   async logout(){
