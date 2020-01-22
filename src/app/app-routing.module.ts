@@ -24,6 +24,8 @@ import {SubscribeComponent} from './components/subscribe/subscribe.component'
 import {LocateUsComponent} from './components/locate-us/locate-us.component'
 import {allProductDetailsResolver} from './components/products/product-details/product-details.resolve'
 import {ProductDetailsComponent} from './components/products/product-details/product-details.component'
+import {CartListingComponent} from './components/cart-listing/cart-listing.component'
+import {cartDetailsResolver} from './components/cart-listing/cart-listing.resolve'
 
 const routes: Routes = [
   {
@@ -120,6 +122,13 @@ const routes: Routes = [
           event: ordersDetailsResolver,
         },
         component: OrdersComponent
+      },
+      {
+        path: "cart-list",
+        resolve: {
+          event: cartDetailsResolver,
+        },
+        component: CartListingComponent
       }
     ]
   },

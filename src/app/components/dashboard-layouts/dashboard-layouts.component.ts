@@ -18,6 +18,7 @@ export class DashboardLayoutsComponent implements OnInit {
   faCoffee = faCoffee;
   pdfUrl = `${environment.pfdUrl}`
   locateUsUrl = 'locate-us'
+  cartListUrl = 'cart-list'
   loading = false
   submitted = false
   updateProfile = 'dashboard/update-profile';

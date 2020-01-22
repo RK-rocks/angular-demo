@@ -35,6 +35,7 @@ export class ProductDetailsComponent implements OnInit {
   previousUrl
   isActive
   isDisabled = false;
+  product_color_id_global
   product_image_id_global
   quantity_product_global
   rattingProductUrl = `product/productsratting`
@@ -95,14 +96,17 @@ export class ProductDetailsComponent implements OnInit {
 
   //this function is for change slider index
   changeIndexSlider(obj) {
-    this.product_image_id_global = obj.product_image_id
+    console.log(obj.id)
+    this.product_color_id_global = obj.id
     let indexOfImage
     console.log(obj)
     let res = this.letProductData['tbl_product_images'].map((index, i) => {
       if (obj.product_image_id == index.id) {
-        indexOfImage = i
+        this.product_image_id_global = obj.product_image_id
+        indexOfImage = i + 1
       }
     })
+    console.log('this.product_image_id_global',this.product_image_id_global)
     //this indexOfImage is related to image with color
     console.log('swiper-slide', indexOfImage)
     // this.componentRef.directiveRef.setIndex(indexOfImage);
@@ -147,6 +151,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   async addToCart(obj) {
+    this.product_color_id_global
+    console.log(this.product_color_id_global)
     this.product_image_id_global
     if (this.quantity_product_global == undefined) {
       this.quantity_product_global = 1
@@ -164,7 +170,8 @@ export class ProductDetailsComponent implements OnInit {
         user_id: user_id,
         product_id: obj.id,
         total_item: this.quantity_product_global,
-        product_color_id: this.product_image_id_global,
+        product_color_id: this.product_color_id_global,
+        product_image_id:this.product_image_id_global
       }
       let res = await this.AuthLoginService.postRequest(url, reqObj);
       if (res.status == 1) {

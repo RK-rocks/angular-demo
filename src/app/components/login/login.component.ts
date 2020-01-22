@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   loginWith
   isDisabled = false;
   loggedIn
+  products_cart_flag
   constructor(
     protected router: Router,
     private formBuilder: FormBuilder,
@@ -73,11 +74,15 @@ export class LoginComponent implements OnInit {
       const res = await this.AuthLoginService.postRequest(url, a);
       console.log(res)
       if (res.status == 1) {
+        this.products_cart_flag = 0
+        if(res.data.userData.cart_item_numbers != null){
+          this.products_cart_flag = res.data.userData.cart_item_numbers
+        }
         const responseData = {
           userId: res.data.userData.user_id,
           token: res.data.userData.token,
           is_subscribed: res.data.userData.is_subscribed,
-          cart_item_numbers:res.data.userData.cart_item_numbers
+          cart_item_numbers:this.products_cart_flag
         }
         localStorage.setItem('currentUser', JSON.stringify(responseData));
         this.authenticationService.currentUserSubject.next({
@@ -86,7 +91,7 @@ export class LoginComponent implements OnInit {
           first_name: 'aaa', 
           last_name: 'ss',
           is_subscribed:res.data.userData.is_subscribed,
-          cart_item_numbers:res.data.userData.cart_item_numbers
+          cart_item_numbers:this.products_cart_flag
         });
         this.isDisabled = true
         this.loading = false
@@ -120,11 +125,15 @@ export class LoginComponent implements OnInit {
       const res = await this.AuthLoginService.postRequest(url, a);
       console.log(res)
       if (res.status == 1) {
+        this.products_cart_flag = 0
+        if(res.data.userData.cart_item_numbers != null){
+          this.products_cart_flag = res.data.userData.cart_item_numbers
+        }
         const responseData = {
           userId: res.data.userData.user_id,
           token: res.data.userData.token,
           is_subscribed: res.data.userData.is_subscribed,
-          cart_item_numbers:res.data.userData.cart_item_numbers
+          cart_item_numbers:this.products_cart_flag
         }
         localStorage.setItem('currentUser', JSON.stringify(responseData));
         this.authenticationService.currentUserSubject.next({
@@ -133,7 +142,7 @@ export class LoginComponent implements OnInit {
           first_name: 'aaa', 
           last_name: 'ss',
           is_subscribed:res.data.userData.is_subscribed,
-          cart_item_numbers:res.data.userData.cart_item_numbers
+          cart_item_numbers:this.products_cart_flag
         });
         this.isDisabled = true
         this.loading = false
@@ -177,11 +186,15 @@ export class LoginComponent implements OnInit {
       const res = await this.AuthLoginService.postRequest(url, a);
       console.log(res)
       if (res.status == 1) {
+        this.products_cart_flag = 0
+        if(res.data.userData.cart_item_numbers != null){
+          this.products_cart_flag = res.data.userData.cart_item_numbers
+        }
         const responseData = {
           userId: res.data.userData.user_id,
           token: res.data.userData.token,
           is_subscribed: res.data.userData.is_subscribed,
-          cart_item_numbers:res.data.userData.cart_item_numbers
+          cart_item_numbers:this.products_cart_flag
         }
         localStorage.setItem('currentUser', JSON.stringify(responseData));
         this.authenticationService.currentUserSubject.next({
@@ -190,7 +203,7 @@ export class LoginComponent implements OnInit {
           first_name: 'aaa', 
           last_name: 'ss',
           is_subscribed:'no',
-          cart_item_numbers:res.data.userData.cart_item_numbers
+          cart_item_numbers:this.products_cart_flag
         });
         this.isDisabled = true
         this.toastr.success(res.message)
