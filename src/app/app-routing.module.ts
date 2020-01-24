@@ -26,6 +26,8 @@ import {allProductDetailsResolver} from './components/products/product-details/p
 import {ProductDetailsComponent} from './components/products/product-details/product-details.component'
 import {CartListingComponent} from './components/cart-listing/cart-listing.component'
 import {cartDetailsResolver} from './components/cart-listing/cart-listing.resolve'
+import { CheckoutComponent } from './components/checkout/checkout.component';
+
 
 const routes: Routes = [
   {
@@ -129,6 +131,13 @@ const routes: Routes = [
           event: cartDetailsResolver,
         },
         component: CartListingComponent
+      },
+      {
+        path: "check-out",
+        // resolve: {
+        //   event: cartDetailsResolver,
+        // },
+        component: CheckoutComponent
       }
     ]
   },

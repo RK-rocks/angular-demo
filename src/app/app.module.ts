@@ -40,6 +40,7 @@ import {ProductDetailsComponent} from './components/products/product-details/pro
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { RatingModule } from 'ng-starrating';
 import { CartListingComponent } from './components/cart-listing/cart-listing.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const config = new AuthServiceConfig([
   {
@@ -78,7 +79,8 @@ export function provideConfig() {
     SubscribeComponent,
     LocateUsComponent,
     ProductDetailsComponent,
-    CartListingComponent
+    CartListingComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
