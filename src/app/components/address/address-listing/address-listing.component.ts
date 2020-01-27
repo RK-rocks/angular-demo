@@ -55,7 +55,7 @@ export class AddressListingComponent implements OnInit {
     this.router.navigate(['/dashboard/addres-add/'+readyText]);
   }
 
-  public openConfirmationDialog(address) {
+  public openConfirmationDialog(address,index) {
     let titleMsg = 'Please confirm..'
     let msg = 'Do you really want to delete this address?'
     let classSubmitbtn = 'submit-btn'
@@ -74,6 +74,7 @@ export class AddressListingComponent implements OnInit {
             }
             let res = await this.AuthLoginService.postRequest(url, reqObj);
             if (res.status == 1) {
+              this.letAddressData.splice(index,1);
               this.router.navigate(['/dashboard/addres-list']);
               this.toastr.success(res.message)
             } else {

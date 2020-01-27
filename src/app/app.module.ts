@@ -41,6 +41,8 @@ import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { RatingModule } from 'ng-starrating';
 import { CartListingComponent } from './components/cart-listing/cart-listing.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ModalComponent } from './components/helper-components/modal/modal.component';
+import {ModalService} from './_services/modal.service'
 
 const config = new AuthServiceConfig([
   {
@@ -80,7 +82,8 @@ export function provideConfig() {
     LocateUsComponent,
     ProductDetailsComponent,
     CartListingComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +104,7 @@ export function provideConfig() {
     NgxUsefulSwiperModule,
     RatingModule
   ],
-  providers: [UserService, NbSidebarService, AuthLoginService,EncrDecrService
+  providers: [UserService, NbSidebarService, AuthLoginService,EncrDecrService,ModalService
     // ConfirmationDialogService
     ,[
       {

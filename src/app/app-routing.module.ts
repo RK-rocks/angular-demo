@@ -134,10 +134,11 @@ const routes: Routes = [
       },
       {
         path: "check-out",
-        // resolve: {
-        //   event: cartDetailsResolver,
-        // },
-        component: CheckoutComponent
+        resolve: {
+          event: addressDetailsResolver,
+        },
+        component: CheckoutComponent,
+        runGuardsAndResolvers:'always'
       }
     ]
   },

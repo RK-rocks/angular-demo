@@ -58,6 +58,10 @@ export class CartListingComponent implements OnInit {
     this.router.navigate(["/"]);
   }
 
+  redirectCheckOutPage(){
+    this.router.navigate(["/dashboard/check-out"]);
+  }
+
   async deleteCartItem(id,index){
     console.log(id)
     // this.eleRef.nativeElement.querySelector('#cartWrapperInner' + id).remove()

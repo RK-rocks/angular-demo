@@ -1,34 +1,102 @@
-
-	<div class="product">
-		<img src="https://image.rakuten.co.jp/footmonkey/cabinet/newbalance/nb-wl555-sj-1.jpg">
-		<h3>555 New Balance</h3>
-		<p>$69.99</p>
-		
-		<table class="information">
-			<tr>
-				<td class="label">Style #:</td>
-				<td>WL696CCA</td>
-			</tr>
-			<tr>
-				<td class="label break">Color:</td>
-				<td>Grey & mint</td>
-			</tr>
-			<tr>
-				<td class="label">Subtotal:</td>
-				<td>$69.99</td>
-			</tr>
-			<tr>
-				<td class="label">Tax:</td>
-				<td>$5.60</td>
-			</tr>
-			<tr>
-				<td class="label break">Shipping:</td>
-				<td>$5.00</td>
-			</tr>
-			<tr>
-				<td class="label">Total</td>
-				<td class="label">$80.59</td>
-			</tr>
+<div>
+	<div class="row ma-0 mb-40">
+		<div class="col-lg-6">
+			<div class="mlr-auto pb-0 pt-4">
+				<span class="title">Select Address Details</span>
+			</div>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<table class="table color-white">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">address</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let address of letAddressData | paginate: { itemsPerPage: 3, currentPage: p };let i = index">
+					<th scope="row">{{i+1}}</th>
+					<td>
+						<div [innerHtml]="address.address">
+						</div>
+					</td>
+	
+					<td>
+						<div>
+							<i [className]="(address.is_default == 'yes') ? 'fa fa-check-circle cursor-pointer color-yellow font-size-29' : 'fa fa-check-circle font-size-29 cursor-pointer'"
+								 aria-hidden="true"
+								(click)="openConfirmationDialog(address)"></i>
+						</div>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
+	<div class="row ma-0 mb-40">
+		<div class="col-lg-6">
 	
+		</div>
+		<div class="col-lg-6">
+			<div class="card-footer pb-0 pt-3 float-right">
+				<pagination-controls (pageChange)="p = $event"></pagination-controls>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="!showAddressDiv" [@simpleFadeAnimation]="'in'" class="" [className]="(!showAddressDiv) ? 'popup display-block' : 'popup display-none'" pd-popup="popupNew">
+		<div class="popup-inner color-black">
+			<h1 class="color-black">You have not added default address yet!</h1>
+		  	<p class="color-black mt-10">Please add default address here.</p>
+			  <form [formGroup]="addAddressForm" (ngSubmit)="onSubmit()">
+				<div class="row ma-0 mt-10">
+					<div class="col-lg-12 pa-0">
+						<!-- <label class="all-lebel" for="addressId">Address:</label> -->
+					</div>
+					<div class="col-lg-12 pa-0">
+							<!-- <input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" type="text" formControlName="address"> -->
+							<textarea id='addressId' rows=4 type="text" formControlName="address"  class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
+							<div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+								<div *ngIf="f.address.errors.required">Address is required</div>
+							</div>
+						</div>
+				</div>
+				<div class="row ma-0 mt-20">
+					<div class="mlr-auto">
+					<button [disabled] = 'loading' class="btn btn-primary submit-btn" type="submit">Add</button>
+					<span *ngIf="loading" class="spinner"></span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- <ng-template #elseNotDone>
+	<div [@simpleFadeAnimation]="'in'" class="popup display-block" pd-popup="popupNew">
+		<div class="popup-inner color-black">
+			<h1 class="color-black">You have not added default address yet!</h1>
+		  	<p class="color-black mt-10">Please add default address here.</p>
+			  <form [formGroup]="addAddressForm" (ngSubmit)="onSubmit()">
+				<div class="row ma-0 mt-10">
+					<div class="col-lg-12 pa-0">
+						 <label class="all-lebel" for="addressId">Address:</label>
+					</div>
+					<div class="col-lg-12 pa-0">
+							<input class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" type="text" formControlName="address"> 
+							<textarea id='addressId' rows=4 type="text" formControlName="address"  class="input-forms form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
+							<div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+								<div *ngIf="f.address.errors.required">Address is required</div>
+							</div>
+						</div>
+				</div>
+				<div class="row ma-0 mt-20">
+					<div class="mlr-auto">
+					<button [disabled] = 'loading' class="btn btn-primary submit-btn" type="submit">Add</button>
+					<span *ngIf="loading" class="spinner"></span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</ng-template> -->
