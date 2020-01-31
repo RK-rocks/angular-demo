@@ -22,7 +22,6 @@
 						<div [innerHtml]="address.address">
 						</div>
 					</td>
-	
 					<td>
 						<div>
 							<i [className]="(address.is_default == 'yes') ? 'fa fa-check-circle cursor-pointer color-yellow font-size-29' : 'fa fa-check-circle font-size-29 cursor-pointer'"
@@ -42,6 +41,13 @@
 			<div class="card-footer pb-0 pt-3 float-right">
 				<pagination-controls (pageChange)="p = $event"></pagination-controls>
 			</div>
+		</div>
+	</div>
+	<div class="row ma-0 mt-20">
+		<div class="ml-auto">
+			{{testEmitter$ | async}} test {{grandTotal}}
+		<button [disabled] = 'loading' class="btn btn-primary submit-btn" (click)=pay()>Pay</button>
+		<span *ngIf="loading" class="spinner"></span>
 		</div>
 	</div>
 	<div *ngIf="!showAddressDiv" [@simpleFadeAnimation]="'in'" class="" [className]="(!showAddressDiv) ? 'popup display-block' : 'popup display-none'" pd-popup="popupNew">

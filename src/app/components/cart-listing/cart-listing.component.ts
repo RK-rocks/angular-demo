@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, ContentChildren, ElementRef, Renderer, Re
 import { AuthLoginService } from "../../_services/auth.service";
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../dashboard-layouts/cart.service';
-
+import { TotalPriceService } from '../checkout/total-price.service'
 
 @Component({
   selector: 'app-cart-listing',
@@ -20,6 +20,7 @@ export class CartListingComponent implements OnInit {
   shippingCharge = 15.00
   grandTotal
   shownCartDiv = true
+  shownAddressListingPage = false
   sessionDataCurr: any = JSON.parse(localStorage.getItem('currentUser'))
   totalCartItems = this.sessionDataCurr.cart_item_numbers
   constructor(
@@ -28,7 +29,8 @@ export class CartListingComponent implements OnInit {
     private AuthLoginService: AuthLoginService,
     private toastr: ToastrService,
     private eleRef: ElementRef,
-    private cartService: CartService
+    private cartService: CartService,
+    private totalPriceService: TotalPriceService
   ) { }
 
   ngOnInit() {
@@ -59,11 +61,13 @@ export class CartListingComponent implements OnInit {
   }
 
   redirectCheckOutPage(){
+    this.totalPriceService.emitNavChangeEvent(this.grandTotal);
     this.router.navigate(["/dashboard/check-out"]);
   }
 
   async deleteCartItem(id,index){
     console.log(id)
+    console.log(index)
     // this.eleRef.nativeElement.querySelector('#cartWrapperInner' + id).remove()
     try {
       console.log("filterback function called")

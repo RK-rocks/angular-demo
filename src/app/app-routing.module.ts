@@ -27,7 +27,7 @@ import {ProductDetailsComponent} from './components/products/product-details/pro
 import {CartListingComponent} from './components/cart-listing/cart-listing.component'
 import {cartDetailsResolver} from './components/cart-listing/cart-listing.resolve'
 import { CheckoutComponent } from './components/checkout/checkout.component';
-
+import {StripePaymentFormComponent} from './components/stripe-payment-form/stripe-payment-form.component'
 
 const routes: Routes = [
   {
@@ -131,6 +131,13 @@ const routes: Routes = [
           event: cartDetailsResolver,
         },
         component: CartListingComponent
+      },
+      {
+        path: "stripe-payment",
+        // resolve: {
+        //   event: cartDetailsResolver,
+        // },
+        component: StripePaymentFormComponent
       },
       {
         path: "check-out",

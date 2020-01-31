@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,7 +42,8 @@ import { RatingModule } from 'ng-starrating';
 import { CartListingComponent } from './components/cart-listing/cart-listing.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ModalComponent } from './components/helper-components/modal/modal.component';
-import {ModalService} from './_services/modal.service'
+import {ModalService} from './_services/modal.service';
+import { StripePaymentFormComponent } from './components/stripe-payment-form/stripe-payment-form.component'
 
 const config = new AuthServiceConfig([
   {
@@ -83,7 +84,8 @@ export function provideConfig() {
     ProductDetailsComponent,
     CartListingComponent,
     CheckoutComponent,
-    ModalComponent
+    ModalComponent,
+    StripePaymentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +104,8 @@ export function provideConfig() {
     NgbModule,
     SocialLoginModule,
     NgxUsefulSwiperModule,
-    RatingModule
+    RatingModule,
+    FormsModule
   ],
   providers: [UserService, NbSidebarService, AuthLoginService,EncrDecrService,ModalService
     // ConfirmationDialogService
