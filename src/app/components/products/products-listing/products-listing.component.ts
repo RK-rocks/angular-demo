@@ -135,7 +135,7 @@ export class ProductsListingComponent implements OnInit {
       if(res.status == 1){
         this.loading = false
         this.letProductData = res.data.productData
-        this.toastr.success(res.message)
+        // this.toastr.success(res.message)
       }else{
         this.loading = false
         this.toastr.warning(res.message)
