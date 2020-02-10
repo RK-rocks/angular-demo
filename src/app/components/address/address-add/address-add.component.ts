@@ -81,6 +81,8 @@ export class AddressAddComponent implements OnInit {
       if(res.status == 1){
         if(!this.editMode){
           this.router.navigate(['/dashboard/addres-list']);
+        }else{
+          this.router.navigate(['/dashboard/addres-list']);
         }
         this.loading = false
 

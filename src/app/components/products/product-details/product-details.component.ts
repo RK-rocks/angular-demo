@@ -175,8 +175,13 @@ export class ProductDetailsComponent implements OnInit {
       }
       let res = await this.AuthLoginService.postRequest(url, reqObj);
       if (res.status == 1) {
-
-        this.totalCartItems = +this.totalCartItems + this.quantity_product_global;
+        if(res.data.is_item_repeted == 'yes'){
+          console.log("in yes")
+          this.totalCartItems = res.data.total_item
+        }else{
+          console.log("no")
+          this.totalCartItems = +this.totalCartItems + this.quantity_product_global;
+        }
         console.log(typeof(this.totalCartItems))
         console.log(typeof(this.quantity_product_global))
         this.cartService.emitNavChangeEvent(this.totalCartItems);

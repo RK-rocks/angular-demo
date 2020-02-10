@@ -50,7 +50,7 @@ export class DashboardLayoutsComponent implements OnInit {
 
   async logout(){
     let res:any = await localStorage.clear()
-    this.AuthLoginService.currentUserSubject.next({
+    let res2:any = this.AuthLoginService.currentUserSubject.next({
       id: null,
       password: null, 
       first_name: null, 
@@ -58,9 +58,9 @@ export class DashboardLayoutsComponent implements OnInit {
       is_subscribed:null,
       cart_item_numbers:null
     });
-    if(res){
+    // if(this.AuthLoginService.currentUser){
       this.router.navigate(['/']);
-    }
+    // } 
   }
 
   public openConfirmationDialog(subscribe) {

@@ -18,6 +18,7 @@
           <th scope="col">Order No</th>
           <th scope="col">Item Name</th>
           <th scope="col">Color</th>
+          <th scope="col">Status</th>
           <th scope="col">Quantity</th>
           <th scope="col">Date</th>
         </tr>
@@ -29,6 +30,9 @@
             <td>{{order.tbl_product.name}}</td>
             <td>
                 {{order.tbl_product_color.tbl_color.color}}
+            </td>
+            <td>
+              {{order.status}}
             </td>
             <td>{{order.total_item}}</td>
             <td>{{order.createdAt}}</td>
